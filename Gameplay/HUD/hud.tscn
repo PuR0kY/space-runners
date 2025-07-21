@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfwjonxtr6eox"]
+
+[ext_resource type="Texture2D" uid="uid://hw6441ckswaf" path="res://textures/visor_overlay.png" id="1_37p78"]
+[ext_resource type="Script" uid="uid://c3dbrd8qoyl5r" path="res://Spaceship/HUD/hud.gd" id="1_64ctp"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_64ctp")
+
+[node name="VisorOverlay" type="Sprite2D" parent="."]
+position = Vector2(584, 375)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_37p78")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 357)
+scale = Vector2(0.5, 0.5)
+
+[node name="Orbs" type="Label" parent="."]
+offset_left = 935.0
+offset_top = 535.0
+offset_right = 997.0
+offset_bottom = 568.0
+text = "orbs: "
+horizontal_alignment = 2
+vertical_alignment = 2
+uppercase = true
+
+[node name="Credits" type="Label" parent="."]
+offset_left = 926.0
+offset_top = 553.0
+offset_right = 999.0
+offset_bottom = 586.0
+text = "credits: "
+horizontal_alignment = 2
+vertical_alignment = 2
+uppercase = true
+
+[node name="Speed" type="Label" parent="."]
+offset_left = 137.0
+offset_top = 547.0
+offset_right = 210.0
+offset_bottom = 580.0
+text = "speed:"
+horizontal_alignment = 2
+vertical_alignment = 2
+uppercase = true
+
+[node name="BuyMenu" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 431.0
+offset_top = 239.0
+offset_right = 742.0
+offset_bottom = 475.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 200.0
+offset_bottom = 39.0
+text = "BUY MENU"
+
+[node name="Button" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 36.0
+offset_right = 79.0
+offset_bottom = 79.0
+text = "1"
+
+[node name="Button2" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 35.0
+offset_right = 184.0
+offset_bottom = 78.0
+text = "2"
+
+[node name="Button3" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 35.0
+offset_right = 287.0
+offset_bottom = 78.0
+text = "3"
+
+[node name="Button4" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 97.0
+offset_right = 80.0
+offset_bottom = 140.0
+text = "4"
+
+[node name="Button5" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 96.0
+offset_right = 185.0
+offset_bottom = 139.0
+text = "5"
+
+[node name="Button6" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 96.0
+offset_right = 288.0
+offset_bottom = 139.0
+text = "6"
+
+[node name="Button7" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 158.0
+offset_right = 82.0
+offset_bottom = 201.0
+text = "7"
+
+[node name="Button8" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 157.0
+offset_right = 187.0
+offset_bottom = 200.0
+text = "8"
+
+[node name="Button9" type="Button" parent="BuyMenu"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 157.0
+offset_right = 290.0
+offset_bottom = 200.0
+text = "9"

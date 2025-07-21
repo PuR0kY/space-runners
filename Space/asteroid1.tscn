@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://lnlq6w2iy7is"]
+
+[ext_resource type="PackedScene" uid="uid://c77saovj8v7kb" path="res://Space/Asteroids/asteroid.glb" id="1_ap0g7"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_ap0g7")]

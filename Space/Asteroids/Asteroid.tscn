@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c20ss7mdnx42m"]
+
+[ext_resource type="Script" uid="uid://s2sjf20o4qdq" path="res://Space/Asteroids/asteroid.gd" id="2_n00aa"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3yg1c"]
+
+[node name="Sphere_005_Asteroid_0" type="MeshInstance3D"]
+skeleton = NodePath("")
+script = ExtResource("2_n00aa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_3yg1c")

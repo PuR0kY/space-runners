@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://btscvvvce7rpj"]
+
+[ext_resource type="PackedScene" uid="uid://dpangaxoa2sga" path="res://Gameplay/Player/Spaceship.tscn" id="1_dm5kd"]
+[ext_resource type="PackedScene" uid="uid://d0dqjiuwt6gvd" path="res://Space/Space Generation/asteroid_generator.tscn" id="3_dm5kd"]
+[ext_resource type="PackedScene" uid="uid://c0rer5ogbsc8x" path="res://Space/Space Generation/orb_generator.tscn" id="4_dm5kd"]
+[ext_resource type="PackedScene" uid="uid://evmsc8h18cpe" path="res://Space/Space Generation/mothership_generator.tscn" id="4_s1hyh"]
+
+[node name="Space" type="Node3D"]
+transform = Transform3D(0.299772, -0.0116942, 0, 0.0116942, 0.299772, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="PlayersHolder" type="Node3D" parent="."]
+
+[node name="CharacterBody3D" parent="PlayersHolder" instance=ExtResource("1_dm5kd")]
+script = null
+
+[node name="AsteroidGenerator" parent="." instance=ExtResource("3_dm5kd")]
+
+[node name="Orb Generator" parent="." instance=ExtResource("4_dm5kd")]
+
+[node name="Mothership Generator" parent="." instance=ExtResource("4_s1hyh")]

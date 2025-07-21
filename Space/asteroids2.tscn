@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc5hne3hb0ryr"]
+
+[ext_resource type="ArrayMesh" uid="uid://cf1gan1j0mis1" path="res://Space/Asteroids/asteroid2.tres" id="1_6lhys"]
+[ext_resource type="ArrayMesh" uid="uid://de7weux8yu3l0" path="res://Space/Asteroids/asteroids3.tres" id="2_ojp6c"]
+[ext_resource type="ArrayMesh" uid="uid://d4m4wss6jb1e4" path="res://Space/asteroids4.tres" id="3_nu1nv"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="AST_01_LOD0_Material #48_0" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_6lhys")
+skeleton = NodePath("")
+
+[node name="AST_03_LOD0__AST_03_LOD007___Default_0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.9805, 0)
+mesh = ExtResource("2_ojp6c")
+skeleton = NodePath("")
+
+[node name="AST_02_LOD0__0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.761, 0, 0)
+mesh = ExtResource("3_nu1nv")
+skeleton = NodePath("")
+
+[node name="Asteroids4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1909, 48.6869, 34.61)
+mesh = ExtResource("3_nu1nv")
