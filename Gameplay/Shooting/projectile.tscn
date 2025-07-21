@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://05as5g7xybep"]
+
+[ext_resource type="Script" uid="uid://d14vpp5rco078" path="res://Gameplay/Shooting/projectile.gd" id="1_a85iw"]
+
+[sub_resource type="Resource" id="Resource_wfkhw"]
+metadata/__load_path__ = "res://Explosions/Explosion.tscn"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akgne"]
+albedo_color = Color(0, 1, 0, 1)
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture_channel = 1
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_akgne"]
+material = SubResource("StandardMaterial3D_akgne")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a85iw"]
+direction = Vector3(1, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxf0c"]
+albedo_color = Color(0.0156863, 1, 0.0509804, 1)
+emission_enabled = true
+emission = Color(0.027451, 0.941176, 0.0156863, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dgwo2"]
+material = SubResource("StandardMaterial3D_qxf0c")
+size = Vector3(0.04, 0.04, 0.04)
+
+[node name="Projectile" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_a85iw")
+explosion_vfx = SubResource("Resource_wfkhw")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -2.18557e-08, 0.1, 0, -0.5, -4.37114e-09, 0, 2.26445e-08, 0.144998)
+mesh = SubResource("CylinderMesh_akgne")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.0349391)
+target_position = Vector3(0, 0, -1)
+collision_mask = 255
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000790417, -0.000804439, -0.469751)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_a85iw")
+draw_pass_1 = SubResource("BoxMesh_dgwo2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

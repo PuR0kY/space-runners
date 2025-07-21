@@ -1,0 +1,74 @@
+[
+	{
+		"name": "Striker",
+		"health": 100,
+		"damage": 25,
+		"magazine_size": 1000,
+		"fire_rate": 100,
+		"max_speed": 1400,
+		"acceleration": 600,
+		"handling": 3.0,
+		"ship_scene_path": "res://Gameplay/Spaceships/Striker.tscn",
+		"icon": "res://Gameplay/Spaceships/Striker/Textures/icon.png"
+	},
+	{
+		"name": "Bob",
+		"health": 80,
+		"damage": 20,
+		"magazine_size": 500,
+		"fire_rate": 200,
+		"max_speed": 1400,
+		"acceleration": 800,
+		"handling": 5.0,
+		"ship_scene_path": "res://Gameplay/Spaceships/Bob/glTF/Bob.gltf",
+		"icon": "res://Gameplay/Spaceships/Bob/Textures/icon.png"
+	},
+	{
+		"name": "Challenger",
+		"health": 110,
+		"damage": 35,
+		"magazine_size": 200,
+		"fire_rate": 100,
+		"max_speed": 1000,
+		"acceleration": 500,
+		"handling": 2.0,
+		"ship_scene_path": "res://Gameplay/Spaceships/Challenger/glTF/Challenger.gltf",
+		"icon": "res://Gameplay/Spaceships/Challenger/Textures/icon.png"
+	},
+	{
+		"name": "Dispatcher",
+		"health": 75,
+		"damage": 60,
+		"magazine_size": 600,
+		"fire_rate": 80,
+		"max_speed": 1500,
+		"acceleration": 600,
+		"handling": 3.0,
+		"ship_scene_path": "res://Gameplay/Spaceships/Dispatcher/glTF/Dispatcher.gltf",
+		"icon": "res://Gameplay/Spaceships/Dispatcher/Textures/icon.png"
+	},
+	{
+		"name": "Executioner",
+		"health": 110,
+		"damage": 80,
+		"magazine_size": 300,
+		"fire_rate": 150,
+		"max_speed": 900,
+		"acceleration": 300,
+		"handling": 1.6,
+		"ship_scene_path": "res://Gameplay/Spaceships/Executioner/glTF/Executioner.gltf",
+		"icon": "res://Gameplay/Spaceships/Executioner/Textures/icon.png"
+	},
+	{
+		"name": "Imperial",
+		"health": 200,
+		"damage": 10,
+		"magazine_size": 150,
+		"fire_rate": 60,
+		"max_speed": 800,
+		"acceleration": 300,
+		"handling": 1.2,
+		"ship_scene_path": "res://Gameplay/Spaceships/Imperial/glTF/Imperial.gltf",
+		"icon": "res://Gameplay/Spaceships/Imperial/Textures/icon.png"
+	},
+]
