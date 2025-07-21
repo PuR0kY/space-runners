@@ -32,7 +32,7 @@ func _ready() -> void:
 			
 func set_stats(data: Dictionary, name: String) -> void:
 	pick_button.text = "Pick " + name + "!"
-	current_selected_ship = data
+	current_selected_ship = name
 	health_value.value = data["health"]
 	dmg_value.value = data["damage"]
 	speed_value.value = data["max_speed"]
@@ -52,4 +52,4 @@ func spawn_ship_mesh(data: Dictionary) -> void:
 	ship.add_child(instance)
 
 func on_pick_click() -> void:
-	pass
+	LocalGameManager.pick_ship(current_selected_ship)

@@ -84,6 +84,7 @@ layout_mode = 2
 text = "EXIT"
 
 [node name="PickingScene" type="Node2D" parent="." node_paths=PackedStringArray("pick_button")]
+visible = false
 position = Vector2(1127, 627)
 script = ExtResource("2_nwlhp")
 pick_button = NodePath("Spaceships/Button2")
@@ -272,5 +273,6 @@ offset_right = 407.0
 offset_bottom = 375.0
 text = "PICK SHIP"
 
+[connection signal="pressed" from="UI/Panel/TOP MENU/HANGAR" to="." method="_on_hangar_pressed"]
 [connection signal="pressed" from="UI/Panel/TOP MENU/EXIT" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="PickingScene/Spaceships/Button2" to="PickingScene" method="on_pick_click"]

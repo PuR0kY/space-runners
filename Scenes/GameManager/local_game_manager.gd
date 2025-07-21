@@ -11,6 +11,7 @@ func _ready():
 func pick_ship(name: String):
 	if ship_config.has(name):
 		selected_ship_id = name
+		print(selected_ship_id + " Picked!")
 
 func load_ship_config():
 	var file = FileAccess.open("res://Gameplay/spaceships.json", FileAccess.READ)
