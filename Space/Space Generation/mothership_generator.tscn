@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://evmsc8h18cpe"]
-
-[ext_resource type="Script" uid="uid://3xf7soklp8n5" path="res://Space/Mothership/mothership_generator.gd" id="1_m8xmc"]
-[ext_resource type="PackedScene" uid="uid://dq4clsbdt56fx" path="res://Space/Mothership/mothership.tscn" id="2_2eji1"]
-
-[node name="Mothership Generator" type="Node3D"]
-script = ExtResource("1_m8xmc")
-mothership_scene = ExtResource("2_2eji1")

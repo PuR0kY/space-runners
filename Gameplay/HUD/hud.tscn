@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfwjonxtr6eox"]
 
 [ext_resource type="Texture2D" uid="uid://hw6441ckswaf" path="res://textures/visor_overlay.png" id="1_37p78"]
-[ext_resource type="Script" uid="uid://c3dbrd8qoyl5r" path="res://Spaceship/HUD/hud.gd" id="1_64ctp"]
+[ext_resource type="Script" uid="uid://c3dbrd8qoyl5r" path="res://Gameplay/HUD/hud.gd" id="1_64ctp"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_64ctp")

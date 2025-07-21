@@ -1,7 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://05as5g7xybep"]
 
-[ext_resource type="Script" uid="uid://d14vpp5rco078" path="res://Spaceship/Shooting/projectile.gd" id="1_a85iw"]
-[ext_resource type="PackedScene" uid="uid://ilvy8065k61t" path="res://Explosions/Explosion.tscn" id="2_qxf0c"]
+[ext_resource type="Script" uid="uid://d14vpp5rco078" path="res://Gameplay/Shooting/projectile.gd" id="1_a85iw"]
+
+[sub_resource type="Resource" id="Resource_wfkhw"]
+metadata/__load_path__ = "res://Explosions/Explosion.tscn"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akgne"]
 albedo_color = Color(0, 1, 0, 1)
@@ -33,7 +35,7 @@ size = Vector3(0.04, 0.04, 0.04)
 [node name="Projectile" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_a85iw")
-explosion_vfx = ExtResource("2_qxf0c")
+explosion_vfx = SubResource("Resource_wfkhw")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -2.18557e-08, 0.1, 0, -0.5, -4.37114e-09, 0, 2.26445e-08, 0.144998)

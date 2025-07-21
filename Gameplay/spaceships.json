@@ -8,8 +8,8 @@
 		"max_speed": 1400,
 		"acceleration": 600,
 		"handling": 3.0,
-		"ship_scene_path": "res://Spaceship/Striker.tscn",
-		"icon": "res://Spaceship/Spaceships/Striker/Textures/icon.png"
+		"ship_scene_path": "res://Gameplay/Spaceships/Striker.tscn",
+		"icon": "res://Gameplay/Spaceships/Striker/Textures/icon.png"
 	},
 	{
 		"name": "Bob",
@@ -20,8 +20,8 @@
 		"max_speed": 1400,
 		"acceleration": 800,
 		"handling": 5.0,
-		"ship_scene_path": "res://Spaceship/Spaceships/Bob/glTF/Bob.gltf",
-		"icon": "res://Spaceship/Spaceships/Bob/Textures/icon.png"
+		"ship_scene_path": "res://Gameplay/Spaceships/Bob/glTF/Bob.gltf",
+		"icon": "res://Gameplay/Spaceships/Bob/Textures/icon.png"
 	},
 	{
 		"name": "Challenger",
@@ -32,8 +32,8 @@
 		"max_speed": 1000,
 		"acceleration": 500,
 		"handling": 2.0,
-		"ship_scene_path": "res://Spaceship/Spaceships/Challenger/glTF/Challenger.gltf",
-		"icon": "res://Spaceship/Spaceships/Challenger/Textures/icon.png"
+		"ship_scene_path": "res://Gameplay/Spaceships/Challenger/glTF/Challenger.gltf",
+		"icon": "res://Gameplay/Spaceships/Challenger/Textures/icon.png"
 	},
 	{
 		"name": "Dispatcher",
@@ -44,8 +44,8 @@
 		"max_speed": 1500,
 		"acceleration": 600,
 		"handling": 3.0,
-		"ship_scene_path": "res://Spaceship/Spaceships/Dispatcher/glTF/Dispatcher.gltf",
-		"icon": "res://Spaceship/Spaceships/Dispatcher/Textures/icon.png"
+		"ship_scene_path": "res://Gameplay/Spaceships/Dispatcher/glTF/Dispatcher.gltf",
+		"icon": "res://Gameplay/Spaceships/Dispatcher/Textures/icon.png"
 	},
 	{
 		"name": "Executioner",
@@ -56,8 +56,8 @@
 		"max_speed": 900,
 		"acceleration": 300,
 		"handling": 1.6,
-		"ship_scene_path": "res://Spaceship/Spaceships/Executioner/glTF/Executioner.gltf",
-		"icon": "res://Spaceship/Spaceships/Executioner/Textures/icon.png"
+		"ship_scene_path": "res://Gameplay/Spaceships/Executioner/glTF/Executioner.gltf",
+		"icon": "res://Gameplay/Spaceships/Executioner/Textures/icon.png"
 	},
 	{
 		"name": "Imperial",
@@ -68,7 +68,7 @@
 		"max_speed": 800,
 		"acceleration": 300,
 		"handling": 1.2,
-		"ship_scene_path": "res://Spaceship/Spaceships/Imperial/glTF/Imperial.gltf",
-		"icon": "res://Spaceship/Spaceships/Imperial/Textures/icon.png"
+		"ship_scene_path": "res://Gameplay/Spaceships/Imperial/glTF/Imperial.gltf",
+		"icon": "res://Gameplay/Spaceships/Imperial/Textures/icon.png"
 	},
 ]

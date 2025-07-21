@@ -21,7 +21,7 @@ process_thread_messages = 2
 physics_interpolation_mode = 1
 auto_translate_mode = 1
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.25, -0.32)
-collision_mask = 2
+collision_mask = 3
 spring_length = 0.05
 script = ExtResource("4_axj8w")
 mouse_sensitivity = 0.002
@@ -29,7 +29,6 @@ mouse_sensitivity = 0.002
 [node name="Camera" type="Camera3D" parent="CameraOffset"]
 keep_aspect = 0
 cull_mask = 3
-doppler_tracking = 2
 current = true
 fov = 80.0
 near = 0.005

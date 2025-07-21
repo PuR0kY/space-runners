@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0rer5ogbsc8x"]
-
-[ext_resource type="Script" uid="uid://cd04gwkvtnjf" path="res://Space/Space Generation/orb_generator.gd" id="1_k85b4"]
-[ext_resource type="PackedScene" uid="uid://ce08yq8e278rk" path="res://Space/Collectibles/Orbs/collectible_orb.tscn" id="2_1ea40"]
-
-[node name="Orb Generator" type="Node3D"]
-script = ExtResource("1_k85b4")
-orb_scene = ExtResource("2_1ea40")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://ce08yq8e278rk"]
+
+[ext_resource type="Script" uid="uid://bnuhyoyjppm4t" path="res://Scenes/Space/Collectibles/Orbs/collectible_orb.gd" id="1_8hldk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_axhbl"]
+radius = 2.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8hldk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bqnhl"]
+in_3d_space = true
+noise = SubResource("FastNoiseLite_8hldk")
+
+[sub_resource type="Gradient" id="Gradient_axhbl"]
+colors = PackedColorArray(1, 0, 0, 1, 0.73217, 0.000412577, 0.732741, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_axhbl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_axhbl"]
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 0.419
+as_normal_map = true
+bump_strength = 154.0
+color_ramp = SubResource("Gradient_axhbl")
+noise = SubResource("FastNoiseLite_axhbl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axhbl"]
+albedo_color = Color(1, 0.0235294, 0, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.964696, 0.272853, 0.638631, 1)
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("NoiseTexture2D_axhbl")
+ao_enabled = true
+ao_light_affect = 0.5
+ao_texture = SubResource("NoiseTexture2D_bqnhl")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8hldk"]
+material = SubResource("StandardMaterial3D_axhbl")
+
+[node name="Orb Root" type="Node3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_8hldk")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_axhbl")
+
+[node name="Orb" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
+mesh = SubResource("SphereMesh_8hldk")
+skeleton = NodePath("")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

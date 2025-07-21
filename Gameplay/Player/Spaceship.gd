@@ -1,6 +1,6 @@
 class_name Spaceship extends CharacterBody3D
 
-@export var spaceships_config: Dictionary = {}
+var spaceships_config: Dictionary
 
 var orb_count = 0
 var credit_count = 0
@@ -34,7 +34,7 @@ var target_basis = Basis()
 var target_position = Vector3()
 var sync_timer := 0.0
 
-var projectile = load("res://Gameplay/Spaceship/Shooting/projectile.tscn")
+var projectile = load("res://Gameplay/Shooting/projectile.tscn")
 var instance
 
 @onready var camera: Camera3D = $CameraOffset/Camera
@@ -46,6 +46,13 @@ func _ready() -> void:
 	# JSON Data setting
 	if not is_multiplayer_authority():
 		return
+	var file = FileAccess.open("res://Gameplay/spaceships.json", FileAccess.READ)
+	var json_string = file.get_as_text()
+	var spaceships_object = JSON.new()
+	var spaceships = spaceships_object.parse_string(json_string)
+	if spaceships is Array:
+		var random_int = randi_range(0, spaceships.size())
+		spaceships_config = spaceships[random_int]
 
 	name = spaceships_config["name"]
 	health = spaceships_config["health"]
@@ -121,17 +128,8 @@ func _process(delta: float) -> void:
 	var fps = Engine.get_frames_per_second()
 	var lerp_interval = velocity / fps
 	var lerp_position = global_transform.origin + lerp_interval
-	
-	# TODO: Ověřit jestli vůbec je třeba!
-	if fps > 60:
-		mesh.top_level = true
-		var target_transform = Transform3D(global_transform.basis, lerp_position)
-		mesh.global_transform = mesh.global_transform.interpolate_with(
-			target_transform * mesh_offset_transform, delta * 40.0)
-	else:
-		mesh.global_transform = global_transform * mesh_offset_transform
-		mesh.top_level = false
-			
+
+	mesh.global_transform = global_transform * mesh_offset_transform
 	visor.set_speed(forward_speed)
 	
 	if Input.is_action_just_pressed("quit"):
@@ -177,7 +175,9 @@ func _physics_process(delta: float) -> void:
 	
 @rpc("authority", "call_remote", "unreliable")
 func sync_position(new_basis: Basis, new_position: Vector3, new_velocity: Vector3):
-	if is_multiplayer_authority(): return
+	if is_multiplayer_authority():
+		return
+
 	target_basis = new_basis
 	target_position = new_position
 	velocity = new_velocity
