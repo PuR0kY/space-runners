@@ -1,0 +1,165 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.0.6">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="2505" dy="924" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-0" value="SpaceRunners is a Godot Multiplayer Game located in space where main game loop is inspired by MOBA genre games. My thought is to have two motherships that has some health and that are shielded. Players are splitted to two teams and theyre job is to collect rare orbs located in space and in the mean time fight other team members. These orbs can be traded with player&#39;s Mothership for credits that can provide upgrades. Each player has chosen its Spaceship category at the beginning and this category has its own Upgrade Tree.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Upgrade Trees are meant to help whole Team and are important to finish match. Atleast on Upgrade Category will have as final Upgrade some kind of Nuclear bomb that will disable enemy&#39;s Mothership Shield, which will make this Mothership vulnerable to hit.&lt;br&gt;&lt;br&gt;After this stage team has to work together to destroy enemy Mothership, which will mean end of the Match.&lt;br&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="50" width="720" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-2" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="192" y="360" width="144" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-6" value="MainMenu" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-2">
+          <mxGeometry y="26" width="144" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-7" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="194" y="610" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-8" value="GameManager" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-7">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="264" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-10" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="194" y="700" width="140" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-11" value="Space level" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-10">
+          <mxGeometry y="26" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-12" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="370" y="700" width="140" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-13" value="GameState" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-12">
+          <mxGeometry y="26" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-14" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="34" y="700" width="140" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-15" value="Procedural Generators" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-14">
+          <mxGeometry y="26" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="264" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-19" value="Space is Procedurally Generated, Asteroids, Orbs, even Motherships are always on some kind of different spot from &quot;space center&quot;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-370" y="721" width="160" height="154" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-20">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="281" y="360" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="282" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-20" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="550" y="290" width="150" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-21" value="Spaceship picking scene" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-20">
+          <mxGeometry y="26" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-23" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="550" y="360" width="150" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-24" value="Lobby" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-23">
+          <mxGeometry y="26" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=block;startFill=0;entryX=0.993;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-24" target="V2vyyLIy9fWVnB8k2cOo-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="401" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-27" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="550" y="430" width="150" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-28" value="Settings" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-27">
+          <mxGeometry y="26" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=block;startFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-27">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="413" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="291" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-31" value="For this game we want to implement Picking system before match, so player has definite decision of what category he is in and that will manage to help us find match. Size of match will be decided when we will know how many players are in location rn" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="740" y="246" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-32" value="I would like to have party mode or even friend lobby like there is in PUBG or Warzone where u see other players spaceships, and categories" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="740" y="360" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.987;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-32" target="V2vyyLIy9fWVnB8k2cOo-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1.007;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-31" target="V2vyyLIy9fWVnB8k2cOo-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-35" value="Configurations" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-110" y="291.5" width="150" height="237" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-36" value="Upgrade System" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-90" y="328.5" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-37" value="Spaceships" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-90" y="393.5" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-38" value="Player State?" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-90" y="458.5" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-39" value="JSON Objects we will work with" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-280" y="350.5" width="120" height="119" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-40" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-180" y="700" width="140" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-41" value="Mothership Generator" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-40">
+          <mxGeometry y="26" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-42" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-180" y="770" width="140" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="V2vyyLIy9fWVnB8k2cOo-42" source="V2vyyLIy9fWVnB8k2cOo-43">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="-30.000000000000227" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-43" value="Asteroid Generator" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-42">
+          <mxGeometry y="26" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-44" value="SCENE" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-180" y="840" width="140" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="V2vyyLIy9fWVnB8k2cOo-44" source="V2vyyLIy9fWVnB8k2cOo-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="-30.000000000000227" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-45" value="Collectible Generator" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="V2vyyLIy9fWVnB8k2cOo-44">
+          <mxGeometry y="26" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-41" target="V2vyyLIy9fWVnB8k2cOo-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.024;entryY=0.49;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-15" target="V2vyyLIy9fWVnB8k2cOo-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-53" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-13" target="V2vyyLIy9fWVnB8k2cOo-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="V2vyyLIy9fWVnB8k2cOo-54" target="V2vyyLIy9fWVnB8k2cOo-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-54" value="GameState will contain all players, projectilles, etc.&lt;br&gt;&lt;br&gt;Also there would be informations about Match, such as kills, players States (upgrade level, score, orbs and credits)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="590" y="641" width="210" height="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
