@@ -47,3 +47,4 @@ var instanced_players: Dictionary = {}
 
 
 func _ready():
+	pass
