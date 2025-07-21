@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8fb3ba20ieei"]
+
+[ext_resource type="Script" uid="uid://bbyg5unfxrow6" path="res://Scenes/MainMenu/Base/main_menu.gd" id="1_qfbau"]
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_qfbau")
+
+[node name="Ship" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256597, 2.05927)
+
+[node name="UI" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="TOP MENU" type="GridContainer" parent="UI/Panel"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -167.0
+offset_right = 167.0
+offset_bottom = 80.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+
+[node name="HANGAR" type="Button" parent="UI/Panel/TOP MENU"]
+custom_minimum_size = Vector2(80, 80)
+layout_direction = 2
+layout_mode = 2
+text = "HANGAR"
+
+[node name="PLAY" type="Button" parent="UI/Panel/TOP MENU"]
+custom_minimum_size = Vector2(80, 80)
+layout_direction = 2
+layout_mode = 2
+text = "PLAY"
+
+[node name="SETTINGS" type="Button" parent="UI/Panel/TOP MENU"]
+custom_minimum_size = Vector2(80, 80)
+layout_direction = 2
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="EXIT" type="Button" parent="UI/Panel/TOP MENU"]
+custom_minimum_size = Vector2(80, 80)
+layout_direction = 2
+layout_mode = 2
+text = "EXIT"

@@ -159,6 +159,9 @@
         <mxCell id="V2vyyLIy9fWVnB8k2cOo-54" value="GameState will contain all players, projectilles, etc.&lt;br&gt;&lt;br&gt;Also there would be informations about Match, such as kills, players States (upgrade level, score, orbs and credits)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="590" y="641" width="210" height="200" as="geometry" />
         </mxCell>
+        <mxCell id="V2vyyLIy9fWVnB8k2cOo-57" value="Ship picking will be done inside picking scene and set in gameManager where there will be some kind of dictionary&lt;br&gt;&lt;br&gt;players_ships[player_id] = ship_id" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1070" y="218" width="340" height="340" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

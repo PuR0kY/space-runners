@@ -1,6 +1,6 @@
 class_name Spaceship extends CharacterBody3D
 
-var spaceships_config: Dictionary
+@export var spaceships_config: Dictionary
 
 var orb_count = 0
 var credit_count = 0
@@ -46,13 +46,6 @@ func _ready() -> void:
 	# JSON Data setting
 	if not is_multiplayer_authority():
 		return
-	var file = FileAccess.open("res://Gameplay/spaceships.json", FileAccess.READ)
-	var json_string = file.get_as_text()
-	var spaceships_object = JSON.new()
-	var spaceships = spaceships_object.parse_string(json_string)
-	if spaceships is Array:
-		var random_int = randi_range(0, spaceships.size())
-		spaceships_config = spaceships[random_int]
 
 	name = spaceships_config["name"]
 	health = spaceships_config["health"]

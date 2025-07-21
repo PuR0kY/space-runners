@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://2i7elscin3el"]
+[gd_scene load_steps=9 format=3 uid="uid://2i7elscin3el"]
 
 [ext_resource type="PackedScene" uid="uid://d0dqjiuwt6gvd" path="res://Scenes/Space/Space Generation/asteroid_generator.tscn" id="1_8xonx"]
-[ext_resource type="PackedScene" uid="uid://dpangaxoa2sga" path="res://Gameplay/Player/Spaceship.tscn" id="1_kcipt"]
 [ext_resource type="PackedScene" uid="uid://evmsc8h18cpe" path="res://Scenes/Space/Space Generation/mothership_generator.tscn" id="2_0u6vc"]
 [ext_resource type="PackedScene" uid="uid://c0rer5ogbsc8x" path="res://Scenes/Space/Space Generation/orb_generator.tscn" id="3_kcipt"]
 [ext_resource type="PackedScene" uid="uid://c26416m4cg3hg" path="res://Scenes/Space/sun.tscn" id="4_0u6vc"]
@@ -32,10 +31,6 @@ camera_attributes = SubResource("CameraAttributesPractical_0u6vc")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="PlayersHolder" type="Node3D" parent="."]
-
-[node name="CharacterBody3D" parent="PlayersHolder" instance=ExtResource("1_kcipt")]
-
 [node name="Space" type="Node3D" parent="."]
 
 [node name="PCG" type="Node3D" parent="Space"]
@@ -54,5 +49,3 @@ shadow_enabled = true
 
 [node name="Node3D" parent="Space" instance=ExtResource("4_0u6vc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2419.9, -2660.44)
-
-[node name="GameState" type="Node3D" parent="."]

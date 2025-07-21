@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="SpaceRunners"
-run/main_scene="uid://2i7elscin3el"
+run/main_scene="uid://dq26jfodlva5u"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+
+[autoload]
+
+LocalGameManager="*res://Scenes/GameManager/local_game_manager.gd"
 
 [dotnet]
 

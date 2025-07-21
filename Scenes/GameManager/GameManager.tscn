@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq26jfodlva5u"]
+
+[ext_resource type="Script" uid="uid://br8akn02advfq" path="res://Scenes/GameManager/multiplayer_game_manager.gd" id="1_jmpc8"]
+[ext_resource type="PackedScene" uid="uid://2i7elscin3el" path="res://Scenes/Space/Space.tscn" id="2_pbnlu"]
+
+[node name="GameManager" type="Node3D"]
+script = ExtResource("1_jmpc8")
+space_scene = ExtResource("2_pbnlu")
+
+[node name="Players" type="Node3D" parent="."]
