@@ -1,14 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8fb3ba20ieei"]
+[gd_scene load_steps=6 format=3 uid="uid://b8fb3ba20ieei"]
 
 [ext_resource type="Script" uid="uid://bbyg5unfxrow6" path="res://Scenes/MainMenu/Base/main_menu.gd" id="1_qfbau"]
+[ext_resource type="Script" uid="uid://hau11dv3t1t0" path="res://Scenes/MainMenu/ShipPickingScene/picking_scene.gd" id="2_nwlhp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nwlhp"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_jlgqb"]
+sky_material = SubResource("ProceduralSkyMaterial_nwlhp")
+
+[sub_resource type="Environment" id="Environment_5bohy"]
+background_mode = 2
+sky = SubResource("Sky_jlgqb")
+tonemap_mode = 2
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_qfbau")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5bohy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="Ship" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256597, 2.05927)
+transform = Transform3D(0.598051, 0.3754, -0.708103, 0.119313, 0.831971, 0.541838, 0.792527, -0.408533, 0.452771, -5.42895, 8.48232, 7.8549)
 
 [node name="UI" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 80)
@@ -62,3 +82,195 @@ custom_minimum_size = Vector2(80, 80)
 layout_direction = 2
 layout_mode = 2
 text = "EXIT"
+
+[node name="PickingScene" type="Node2D" parent="." node_paths=PackedStringArray("pick_button")]
+position = Vector2(1127, 627)
+script = ExtResource("2_nwlhp")
+pick_button = NodePath("Spaceships/Button2")
+
+[node name="Spaceships" type="Panel" parent="PickingScene"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -499.0
+offset_top = -397.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="PickingScene/Spaceships"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "PICK YOUR SHIP:"
+
+[node name="GridContainer" type="GridContainer" parent="PickingScene/Spaceships"]
+custom_minimum_size = Vector2(180, 270)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 39.0
+offset_right = 190.0
+offset_bottom = 309.0
+columns = 2
+
+[node name="StatsPanel" type="Panel" parent="PickingScene/Spaceships"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -301.0
+offset_top = -373.0
+offset_right = -1.0
+offset_bottom = -73.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="PickingScene/Spaceships/StatsPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 63.0
+offset_bottom = 29.0
+text = "STATS:"
+
+[node name="health" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+custom_minimum_size = Vector2(300, 30)
+layout_direction = 2
+layout_mode = 0
+offset_top = 40.0
+offset_right = 300.0
+offset_bottom = 70.0
+
+[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/health"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "health:"
+
+[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/health"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = 300.0
+grow_vertical = 2
+max_value = 200.0
+value = 40.0
+show_percentage = false
+
+[node name="dmg" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+custom_minimum_size = Vector2(300, 30)
+layout_direction = 2
+layout_mode = 0
+offset_left = 1.0
+offset_top = 82.0
+offset_right = 301.0
+offset_bottom = 112.0
+
+[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/dmg"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "damage: "
+
+[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/dmg"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = 300.0
+grow_vertical = 2
+value = 40.0
+show_percentage = false
+
+[node name="max_speed" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+custom_minimum_size = Vector2(300, 30)
+layout_direction = 2
+layout_mode = 0
+offset_top = 123.0
+offset_right = 300.0
+offset_bottom = 153.0
+
+[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/max_speed"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "max speed: "
+
+[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/max_speed"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = 300.0
+grow_vertical = 2
+max_value = 2000.0
+value = 40.0
+show_percentage = false
+
+[node name="handling" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+custom_minimum_size = Vector2(300, 30)
+layout_direction = 2
+layout_mode = 0
+offset_left = 2.0
+offset_top = 164.0
+offset_right = 302.0
+offset_bottom = 194.0
+
+[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/handling"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "handling: "
+
+[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/handling"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = 300.0
+grow_vertical = 2
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="fire_rate" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+custom_minimum_size = Vector2(300, 30)
+layout_direction = 2
+layout_mode = 0
+offset_left = 2.0
+offset_top = 205.0
+offset_right = 302.0
+offset_bottom = 235.0
+
+[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/fire_rate"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fire rate: "
+
+[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/fire_rate"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = 300.0
+grow_vertical = 2
+max_value = 200.0
+value = 40.0
+show_percentage = false
+
+[node name="Button2" type="Button" parent="PickingScene/Spaceships"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 338.0
+offset_right = 407.0
+offset_bottom = 375.0
+text = "PICK SHIP"
+
+[connection signal="pressed" from="UI/Panel/TOP MENU/EXIT" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PickingScene/Spaceships/Button2" to="PickingScene" method="on_pick_click"]

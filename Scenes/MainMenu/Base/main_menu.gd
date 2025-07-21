@@ -4,6 +4,6 @@ extends Node3D
 
 func _ready() -> void:
 	pass
-
-func change_ship_mesh(mesh: Mesh) -> void:
-	pass
+	
+func _on_exit_pressed() -> void:
+	get_tree().quit()

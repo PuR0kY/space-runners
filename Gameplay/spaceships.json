@@ -7,7 +7,7 @@
 	"max_speed": 1400,
 	"acceleration": 600,
 	"handling": 3.0,
-	"ship_scene_path": "res://Gameplay/Spaceships/Striker.tscn",
+	"ship_scene_path": "res://Gameplay/Spaceships/Striker/glTF/Striker.gltf",
 	"icon": "res://Gameplay/Spaceships/Striker/Textures/icon.png"
   },
   "Bob": {
