@@ -17,7 +17,7 @@ var magazine_size
 var fire_rate
 var max_speed
 var acceleration
-var input_response
+var input_response = 1.0
 var mesh_offset_transform: Transform3D
 
 # Runtime values
@@ -31,47 +31,58 @@ var target_basis = Basis()
 var target_position = Vector3()
 var sync_timer := 0.0
 
-var mesh
+@onready var mesh: Node3D = $Mesh
 
 var projectile = load("res://Gameplay/Shooting/projectile.tscn")
 var instance
+var spaceships_config
 
 @onready var camera: Camera3D = $CameraOffset/Camera
 @onready var raycast: RayCast3D = $RayCast
 @onready var camera_offset: SpringArm3D = $CameraOffset
 @onready var visor: Visor = $SubViewportContainer/SubViewport/Node2D as Visor
-@onready var ship_mesh_instantiator: NodeInstantiator = $ShipMeshInstantiator
 
 func _ready() -> void:
 	GDSync.connect_gdsync_owner_changed(self, owner_changed)
-	update_hud()
-	set_mesh()
-	
-	if !GDSync.is_gdsync_owner(self):
-		$SubViewportContainer.visible = false  # disable the visor UI for remote players
+	spaceships_config = SpaceshipProvider.spaceships[SpaceshipProvider.selected_ship]
 		
 func owner_changed(owner_id: int) -> void:
 	var isOwner := GDSync.is_gdsync_owner(self)
 	camera.current = isOwner
+	$SubViewportContainer.visible = isOwner
+
+	if isOwner:
+		var selected_ship_id = SpaceshipProvider.selected_ship
+		rpc("_broadcast_ship_id", selected_ship_id)
+		set_mesh(SpaceshipProvider.spaceships[selected_ship_id])
+		update_hud()
 	
-func set_mesh() -> void:
-	var spaceships_config = SpaceshipProvider.spaceships[SpaceshipProvider.selected_ship]
-	# name = spaceships_config["name"]
-	health = spaceships_config["health"]
-	damage = spaceships_config["damage"]
-	magazine_size = spaceships_config["magazine_size"]
-	fire_rate = spaceships_config["fire_rate"]
-	max_speed = spaceships_config["max_speed"]
-	acceleration = spaceships_config["acceleration"]
-	input_response = spaceships_config["handling"]
+func set_mesh(config: Dictionary) -> void:
+	health = config["health"]
+	damage = config["damage"]
+	magazine_size = config["magazine_size"]
+	fire_rate = config["fire_rate"]
+	max_speed = config["max_speed"]
+	acceleration = config["acceleration"]
+	input_response = config["handling"]
+
+	var scene = load(config["ship_scene_path"])
+	var ship = (scene as PackedScene).instantiate()
+	mesh.add_child(ship)
+	mesh_offset_transform = mesh.transform
 	
-	var path = spaceships_config["ship_scene_path"]
-	var scene = load(path)
-	ship_mesh_instantiator.scene = (scene as PackedScene)
-	var ship = ship_mesh_instantiator.instantiate_node()
-	GDSync.set_gdsync_owner(ship, GDSync.get_client_id())
-	mesh = ship
-	mesh_offset_transform = ship.transform
+@rpc("any_peer", "call_local", "reliable")
+func _broadcast_ship_id(ship_id: String) -> void:
+	var sender_id = get_multiplayer().get_remote_sender_id()
+	if sender_id == multiplayer.get_unique_id():
+		return  # Je to zpráva od nás, ignoruj
+
+	if not SpaceshipProvider.spaceships.has(ship_id):
+		push_warning("Unknown ship_id from peer: " + ship_id)
+		return
+
+	var config = SpaceshipProvider.spaceships[ship_id]
+	set_mesh(config)
 
 func get_input(delta):
 	# Buy menu
@@ -141,7 +152,7 @@ func _shoot():
 	get_parent().add_child(instance)
 
 func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
+	if GDSync.is_gdsync_owner(self):
 		# Only local authority controls the ship
 		if Input.is_action_just_pressed("shoot"):
 			rpc("_shoot")
