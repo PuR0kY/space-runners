@@ -10,8 +10,6 @@ extends Node2D
 @export var pick_button: Button
 @onready var ship: Node3D = $"../Ship"
 
-var current_selected_ship
-
 signal Spawn
 
 func _ready() -> void:
@@ -19,10 +17,8 @@ func _ready() -> void:
 		hide()
 
 	var item = preload("res://Scenes/MainMenu/ShipPickingScene/spaceship_card.tscn")
-	var file = FileAccess.open("res://Gameplay/spaceships.json", FileAccess.READ)
-	var json_string = file.get_as_text()
-	var spaceships_object = JSON.new()
-	var spaceships = spaceships_object.parse_string(json_string)
+	var spaceships = SpaceshipProvider.spaceships
+	
 	if spaceships is Dictionary:	
 		for spaceship in spaceships:
 			var card = item.instantiate()
@@ -32,7 +28,9 @@ func _ready() -> void:
 			
 func set_stats(data: Dictionary, name: String) -> void:
 	pick_button.text = "Pick " + name + "!"
-	current_selected_ship = name
+	SpaceshipProvider.selected_ship = name
+	print(SpaceshipProvider.selected_ship, " selected!")
+
 	health_value.value = data["health"]
 	dmg_value.value = data["damage"]
 	speed_value.value = data["max_speed"]
@@ -52,4 +50,4 @@ func spawn_ship_mesh(data: Dictionary) -> void:
 	ship.add_child(instance)
 
 func on_pick_click() -> void:
-	LocalGameManager.pick_ship(current_selected_ship)
+	hide()

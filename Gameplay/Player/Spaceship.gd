@@ -1,7 +1,5 @@
 class_name Spaceship extends CharacterBody3D
 
-@export var spaceships_config: Dictionary
-
 var orb_count = 0
 var credit_count = 0
 var has_atomic_missile := false
@@ -20,7 +18,6 @@ var fire_rate
 var max_speed
 var acceleration
 var input_response
-@onready var mesh: Node3D = $Mesh
 var mesh_offset_transform: Transform3D
 
 # Runtime values
@@ -34,6 +31,8 @@ var target_basis = Basis()
 var target_position = Vector3()
 var sync_timer := 0.0
 
+var mesh
+
 var projectile = load("res://Gameplay/Shooting/projectile.tscn")
 var instance
 
@@ -41,13 +40,23 @@ var instance
 @onready var raycast: RayCast3D = $RayCast
 @onready var camera_offset: SpringArm3D = $CameraOffset
 @onready var visor: Visor = $SubViewportContainer/SubViewport/Node2D as Visor
+@onready var ship_mesh_instantiator: NodeInstantiator = $ShipMeshInstantiator
 
 func _ready() -> void:
-	# JSON Data setting
-	if not is_multiplayer_authority():
-		return
-
-	name = spaceships_config["name"]
+	GDSync.connect_gdsync_owner_changed(self, owner_changed)
+	update_hud()
+	set_mesh()
+	
+	if !GDSync.is_gdsync_owner(self):
+		$SubViewportContainer.visible = false  # disable the visor UI for remote players
+		
+func owner_changed(owner_id: int) -> void:
+	var isOwner := GDSync.is_gdsync_owner(self)
+	camera.current = isOwner
+	
+func set_mesh() -> void:
+	var spaceships_config = SpaceshipProvider.spaceships[SpaceshipProvider.selected_ship]
+	# name = spaceships_config["name"]
 	health = spaceships_config["health"]
 	damage = spaceships_config["damage"]
 	magazine_size = spaceships_config["magazine_size"]
@@ -58,16 +67,11 @@ func _ready() -> void:
 	
 	var path = spaceships_config["ship_scene_path"]
 	var scene = load(path)
-	var instance = (scene as PackedScene).instantiate() as Node3D
-	mesh.add_child(instance)
-	
-	camera.current = is_multiplayer_authority()
-	mesh_offset_transform = mesh.transform
-	if not is_multiplayer_authority():
-		$SubViewportContainer.visible = false  # disable the visor UI for remote players
-	else:
-		update_hud()
-		
+	ship_mesh_instantiator.scene = (scene as PackedScene)
+	var ship = ship_mesh_instantiator.instantiate_node()
+	GDSync.set_gdsync_owner(ship, GDSync.get_client_id())
+	mesh = ship
+	mesh_offset_transform = ship.transform
 
 func get_input(delta):
 	# Buy menu
@@ -115,7 +119,7 @@ func update_hud() -> void:
 	visor.set_speed(forward_speed)
 	
 func _process(delta: float) -> void:
-	if not is_multiplayer_authority():
+	if !GDSync.is_gdsync_owner(self):
 		return;
 		
 	var fps = Engine.get_frames_per_second()
@@ -160,7 +164,7 @@ func _physics_process(delta: float) -> void:
 			sync_timer = 0.0
 			rpc("sync_position", global_transform.basis, global_transform.origin, velocity)
 
-	if not is_multiplayer_authority():
+	if !GDSync.is_gdsync_owner(self):
 		global_transform.basis = global_transform.basis.slerp(target_basis.orthonormalized(), delta * 5.0).orthonormalized()
 		global_transform.origin = global_transform.origin.lerp(target_position, delta * 5.0)
 		return
@@ -168,7 +172,7 @@ func _physics_process(delta: float) -> void:
 	
 @rpc("authority", "call_remote", "unreliable")
 func sync_position(new_basis: Basis, new_position: Vector3, new_velocity: Vector3):
-	if is_multiplayer_authority():
+	if GDSync.is_gdsync_owner(self):
 		return
 
 	target_basis = new_basis

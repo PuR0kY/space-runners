@@ -57,7 +57,7 @@ offset_bottom = 80.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 4
+columns = 5
 
 [node name="HANGAR" type="Button" parent="UI/Panel/TOP MENU"]
 custom_minimum_size = Vector2(80, 80)
@@ -65,11 +65,18 @@ layout_direction = 2
 layout_mode = 2
 text = "HANGAR"
 
-[node name="PLAY" type="Button" parent="UI/Panel/TOP MENU"]
+[node name="HOST" type="Button" parent="UI/Panel/TOP MENU"]
 custom_minimum_size = Vector2(80, 80)
 layout_direction = 2
 layout_mode = 2
-text = "PLAY"
+text = "HOST"
+
+[node name="JOIN" type="Button" parent="UI/Panel/TOP MENU"]
+custom_minimum_size = Vector2(80, 80)
+layout_direction = 2
+layout_mode = 2
+text = "JOIN
+"
 
 [node name="SETTINGS" type="Button" parent="UI/Panel/TOP MENU"]
 custom_minimum_size = Vector2(80, 80)
@@ -274,5 +281,7 @@ offset_bottom = 375.0
 text = "PICK SHIP"
 
 [connection signal="pressed" from="UI/Panel/TOP MENU/HANGAR" to="." method="_on_hangar_pressed"]
+[connection signal="pressed" from="UI/Panel/TOP MENU/HOST" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/Panel/TOP MENU/JOIN" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="UI/Panel/TOP MENU/EXIT" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="PickingScene/Spaceships/Button2" to="PickingScene" method="on_pick_click"]

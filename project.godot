@@ -8,19 +8,30 @@
 
 config_version=5
 
+[GD-Sync]
+
+version="0.10"
+publicKey="74ce96554123ae61"
+privateKey="ad7486874883a134"
+
 [application]
 
 config/name="SpaceRunners"
-run/main_scene="uid://b8fb3ba20ieei"
+run/main_scene="uid://bi5ffrduaryvp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
-LocalGameManager="*res://Scenes/GameManager/local_game_manager.gd"
+GDSync="*res://addons/GD-Sync/MultiplayerClient.gd"
+SpaceshipProvider="*res://Gameplay/SpaceshipProvider.gd"
 
 [dotnet]
 
 project/assembly_name="SpaceRunners"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/GD-Sync/plugin.cfg")
 
 [input]
 
