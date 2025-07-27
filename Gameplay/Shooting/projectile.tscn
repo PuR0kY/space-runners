@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://05as5g7xybep"]
+[gd_scene load_steps=9 format=3 uid="uid://05as5g7xybep"]
 
 [ext_resource type="Script" uid="uid://d14vpp5rco078" path="res://Gameplay/Shooting/projectile.gd" id="1_a85iw"]
+[ext_resource type="Script" uid="uid://b3gmovsb45wqc" path="res://addons/GD-Sync/Scripts/Types/PropertySynchronizer.gd" id="2_55dpc"]
 
 [sub_resource type="Resource" id="Resource_wfkhw"]
 metadata/__load_path__ = "res://Explosions/Explosion.tscn"
@@ -42,9 +43,11 @@ transform = Transform3D(0.1, 0, 0, 0, -2.18557e-08, 0.1, 0, -0.5, -4.37114e-09, 
 mesh = SubResource("CylinderMesh_akgne")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.0349391)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 8.9407e-08, 0, -8.9407e-08, 0.5, 0, 0, -0.492887)
 target_position = Vector3(0, 0, -1)
 collision_mask = 255
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000790417, -0.000804439, -0.469751)
@@ -55,8 +58,19 @@ process_material = SubResource("ParticleProcessMaterial_a85iw")
 draw_pass_1 = SubResource("BoxMesh_dgwo2")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 4.0
 one_shot = true
 autostart = true
+
+[node name="PropertySynchronizer" type="Node" parent="."]
+script = ExtResource("2_55dpc")
+broadcast = 5
+process = 1
+refresh_rate = 60
+node_path = NodePath("..")
+properties = PackedStringArray("global_position", "global_rotation")
+interpolated = true
+interpolation_speed = 60.0
+metadata/_custom_type_script = "uid://b3gmovsb45wqc"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

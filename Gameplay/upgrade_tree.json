@@ -1,0 +1,97 @@
+{
+  "tiers": [
+    {
+      "id": "tier1",
+      "name": "Base Enhancements",
+      "upgrades": [
+        {
+          "id": "speed_boost",
+          "name": "Speed Boost",
+          "description": "Increase ship speed by 20%.",
+          "cost": 10,
+          "next": ["scout"]
+        },
+        {
+          "id": "shield",
+          "name": "Shield",
+          "description": "Regenerating shield upgrade.",
+          "cost": 10,
+          "next": ["tank"]
+        },
+        {
+          "id": "weapon_boost",
+          "name": "Weapon Boost",
+          "description": "Increase fire rate by 15%.",
+          "cost": 10,
+          "next": ["striker"]
+        }
+      ]
+    },
+    {
+      "id": "tier2",
+      "name": "Role Specialization",
+      "upgrades": [
+        {
+          "id": "scout",
+          "name": "Scout",
+          "description": "Gain radar vision and cloaking ability.",
+          "cost": 30,
+          "prerequisite": "speed_boost",
+          "next": ["engineer", "commander"]
+        },
+        {
+          "id": "tank",
+          "name": "Tank",
+          "description": "Gain shield wall and passive defense aura.",
+          "cost": 30,
+          "prerequisite": "shield",
+          "next": ["engineer", "commander"]
+        },
+        {
+          "id": "striker",
+          "name": "Striker",
+          "description": "Gain advanced weapon systems and overdrive ability.",
+          "cost": 30,
+          "prerequisite": "weapon_boost",
+          "next": ["engineer", "commander"]
+        }
+      ]
+    },
+    {
+      "id": "tier3",
+      "name": "Team Utility",
+      "upgrades": [
+        {
+          "id": "engineer",
+          "name": "Engineer",
+          "description": "Build deployables and nuclear launch pad.",
+          "cost": 70,
+          "prerequisite_any_of": ["scout", "tank", "striker"],
+          "next": ["nuclear_rocket"]
+        },
+        {
+          "id": "commander",
+          "name": "Commander",
+          "description": "Enable team-wide vision, jamming, and rocket authorization.",
+          "cost": 70,
+          "prerequisite_any_of": ["scout", "tank", "striker"],
+          "next": ["nuclear_rocket"]
+        }
+      ]
+    },
+    {
+      "id": "tier4",
+      "name": "Final Objective",
+      "upgrades": [
+        {
+          "id": "nuclear_rocket",
+          "name": "Nuclear Rocket",
+          "description": "Construct and deliver the nuclear rocket to destroy the enemy mothership.",
+          "cost": 100,
+          "requires_teamwork": ["engineer", "commander"],
+          "end_game": true
+        }
+      ]
+    }
+  ]
+}

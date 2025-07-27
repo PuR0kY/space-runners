@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfwjonxtr6eox"]
+[gd_scene load_steps=5 format=3 uid="uid://dfwjonxtr6eox"]
 
 [ext_resource type="Texture2D" uid="uid://hw6441ckswaf" path="res://textures/visor_overlay.png" id="1_37p78"]
 [ext_resource type="Script" uid="uid://c3dbrd8qoyl5r" path="res://Gameplay/HUD/hud.gd" id="1_64ctp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcmjt"]
+bg_color = Color(0, 0, 0, 0.464)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7y1e"]
+bg_color = Color(1.44392e-06, 0.720595, 0.322342, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_64ctp")
@@ -10,6 +24,26 @@ script = ExtResource("1_64ctp")
 position = Vector2(584, 375)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_37p78")
+
+[node name="HealthBar" type="ProgressBar" parent="VisorOverlay"]
+custom_minimum_size = Vector2(800, 60)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2320.0
+offset_top = -680.0
+offset_right = -1520.0
+offset_bottom = -620.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_lcmjt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y7y1e")
+step = 1.0
+value = 33.0
+show_percentage = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(579, 357)
