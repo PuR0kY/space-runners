@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi5ffrduaryvp"]
+
+[ext_resource type="Script" uid="uid://lmk5q0tcbkka" path="res://Scenes/Space/main.gd" id="1_e5fcp"]
+[ext_resource type="PackedScene" uid="uid://b8fb3ba20ieei" path="res://Scenes/MainMenu/Base/MainMenu.tscn" id="1_oj352"]
+[ext_resource type="Script" uid="uid://b2eq4l5l3qvy7" path="res://Scenes/players_spawner.gd" id="3_sq00h"]
+
+[node name="GameManager" type="Node3D"]
+script = ExtResource("1_e5fcp")
+
+[node name="MainMenu" parent="." instance=ExtResource("1_oj352")]
+
+[node name="Players" type="Node3D" parent="."]
+script = ExtResource("3_sq00h")

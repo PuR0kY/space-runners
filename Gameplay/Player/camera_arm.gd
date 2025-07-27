@@ -24,9 +24,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		zoom_index = max(zoom_index - 1, 1)
 	
 	spring_length = camera_zoom_levels[zoom_index]
-
-		
-	print(spring_length)
 		
 	if event.is_action_pressed("toggle_mouse_capture"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

@@ -1,7 +1,5 @@
 class_name Spaceship extends CharacterBody3D
 
-var spaceships_config: Dictionary
-
 var orb_count = 0
 var credit_count = 0
 var has_atomic_missile := false
@@ -19,8 +17,7 @@ var magazine_size
 var fire_rate
 var max_speed
 var acceleration
-var input_response
-@onready var mesh: Node3D = $Mesh
+var input_response = 1.0
 var mesh_offset_transform: Transform3D
 
 # Runtime values
@@ -34,6 +31,8 @@ var target_basis = Basis()
 var target_position = Vector3()
 var sync_timer := 0.0
 
+@onready var mesh: Node3D = $Mesh
+
 var projectile = load("res://Gameplay/Shooting/projectile.tscn")
 var instance
 
@@ -42,39 +41,37 @@ var instance
 @onready var camera_offset: SpringArm3D = $CameraOffset
 @onready var visor: Visor = $SubViewportContainer/SubViewport/Node2D as Visor
 
-func _ready() -> void:
-	# JSON Data setting
-	if not is_multiplayer_authority():
-		return
-	var file = FileAccess.open("res://Gameplay/spaceships.json", FileAccess.READ)
-	var json_string = file.get_as_text()
-	var spaceships_object = JSON.new()
-	var spaceships = spaceships_object.parse_string(json_string)
-	if spaceships is Array:
-		var random_int = randi_range(0, spaceships.size())
-		spaceships_config = spaceships[random_int]
+var ship_id = SpaceshipProvider.selected_ship
 
-	name = spaceships_config["name"]
-	health = spaceships_config["health"]
-	damage = spaceships_config["damage"]
-	magazine_size = spaceships_config["magazine_size"]
-	fire_rate = spaceships_config["fire_rate"]
-	max_speed = spaceships_config["max_speed"]
-	acceleration = spaceships_config["acceleration"]
-	input_response = spaceships_config["handling"]
-	
-	var path = spaceships_config["ship_scene_path"]
-	var scene = load(path)
-	var instance = (scene as PackedScene).instantiate() as Node3D
-	mesh.add_child(instance)
-	
-	camera.current = is_multiplayer_authority()
-	mesh_offset_transform = mesh.transform
-	if not is_multiplayer_authority():
-		$SubViewportContainer.visible = false  # disable the visor UI for remote players
-	else:
-		update_hud()
+func _ready() -> void:
+	GDSync.connect_gdsync_owner_changed(self, owner_changed)
+	GDSync.expose_func(set_mesh)
+	GDSync.expose_node(mesh)
+	#GDSync.player_set_data("spaceship_id", ship_id)
 		
+func owner_changed(owner_id: int) -> void:
+	var isOwner := GDSync.is_gdsync_owner(self)
+	camera.current = isOwner
+	$SubViewportContainer.visible = isOwner
+
+	if isOwner:
+		update_hud()
+		set_mesh(SpaceshipProvider.spaceships[ship_id])
+		GDSync.call_func(set_mesh, [SpaceshipProvider.spaceships[ship_id]])
+	
+func set_mesh(config: Dictionary) -> void:
+	health = config["health"]
+	damage = config["damage"]
+	magazine_size = config["magazine_size"]
+	fire_rate = config["fire_rate"]
+	max_speed = config["max_speed"]
+	acceleration = config["acceleration"]
+	input_response = config["handling"]
+
+	var scene = load(config["ship_scene_path"])
+	var ship = GDSync.multiplayer_instantiate((scene as PackedScene), mesh, true, [], true)
+	mesh_offset_transform = mesh.transform
+
 
 func get_input(delta):
 	# Buy menu
@@ -122,7 +119,7 @@ func update_hud() -> void:
 	visor.set_speed(forward_speed)
 	
 func _process(delta: float) -> void:
-	if not is_multiplayer_authority():
+	if !GDSync.is_gdsync_owner(self):
 		return;
 		
 	var fps = Engine.get_frames_per_second()
@@ -144,7 +141,7 @@ func _shoot():
 	get_parent().add_child(instance)
 
 func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
+	if GDSync.is_gdsync_owner(self):
 		# Only local authority controls the ship
 		if Input.is_action_just_pressed("shoot"):
 			rpc("_shoot")
@@ -167,7 +164,7 @@ func _physics_process(delta: float) -> void:
 			sync_timer = 0.0
 			rpc("sync_position", global_transform.basis, global_transform.origin, velocity)
 
-	if not is_multiplayer_authority():
+	if !GDSync.is_gdsync_owner(self):
 		global_transform.basis = global_transform.basis.slerp(target_basis.orthonormalized(), delta * 5.0).orthonormalized()
 		global_transform.origin = global_transform.origin.lerp(target_position, delta * 5.0)
 		return
@@ -175,7 +172,7 @@ func _physics_process(delta: float) -> void:
 	
 @rpc("authority", "call_remote", "unreliable")
 func sync_position(new_basis: Basis, new_position: Vector3, new_velocity: Vector3):
-	if is_multiplayer_authority():
+	if GDSync.is_gdsync_owner(self):
 		return
 
 	target_basis = new_basis

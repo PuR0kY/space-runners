@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpangaxoa2sga"]
+[gd_scene load_steps=6 format=3 uid="uid://dpangaxoa2sga"]
 
 [ext_resource type="Script" uid="uid://cwe2jdf462it1" path="res://Gameplay/Player/Spaceship.gd" id="1_p8lcy"]
-[ext_resource type="Script" path="res://Gameplay/Player/camera_arm.gd" id="4_axj8w"]
+[ext_resource type="Script" uid="uid://bd1ht5l48t8y3" path="res://Gameplay/Player/camera_arm.gd" id="4_axj8w"]
+[ext_resource type="Script" uid="uid://b3gmovsb45wqc" path="res://addons/GD-Sync/Scripts/Types/PropertySynchronizer.gd" id="4_cp0o5"]
 [ext_resource type="PackedScene" uid="uid://dfwjonxtr6eox" path="res://Gameplay/HUD/hud.tscn" id="5_4biqu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1owq"]
@@ -60,4 +61,15 @@ render_target_update_mode = 4
 player = NodePath("../../..")
 
 [node name="Mesh" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="PropertySynchronizer" type="Node" parent="."]
+script = ExtResource("4_cp0o5")
+broadcast = 2
+process = 1
+refresh_rate = 60
+node_path = NodePath("..")
+properties = PackedStringArray("global_position", "global_rotation")
+interpolated = true
+interpolation_speed = 60.0
+metadata/_custom_type_script = "uid://b3gmovsb45wqc"
