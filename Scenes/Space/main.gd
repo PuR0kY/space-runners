@@ -1,5 +1,7 @@
 extends Node3D
 
+var session_seed
+
 func _ready() -> void:
 	GDSync.connected.connect(connected)
 	GDSync.connection_failed.connect(connection_failed)

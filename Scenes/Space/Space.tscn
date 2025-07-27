@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://2i7elscin3el"]
+[gd_scene load_steps=10 format=3 uid="uid://2i7elscin3el"]
 
 [ext_resource type="PackedScene" uid="uid://d0dqjiuwt6gvd" path="res://Scenes/Space/Space Generation/asteroid_generator.tscn" id="1_8xonx"]
+[ext_resource type="Script" uid="uid://tae0ruv25io" path="res://Scenes/Space/space.gd" id="1_rgpdy"]
 [ext_resource type="PackedScene" uid="uid://evmsc8h18cpe" path="res://Scenes/Space/Space Generation/mothership_generator.tscn" id="2_0u6vc"]
 [ext_resource type="PackedScene" uid="uid://c0rer5ogbsc8x" path="res://Scenes/Space/Space Generation/orb_generator.tscn" id="3_kcipt"]
 [ext_resource type="PackedScene" uid="uid://c26416m4cg3hg" path="res://Scenes/Space/sun.tscn" id="4_0u6vc"]
@@ -22,6 +23,7 @@ dof_blur_far_enabled = true
 dof_blur_far_distance = 8192.0
 
 [node name="Match Level" type="Node3D"]
+script = ExtResource("1_rgpdy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_020j0")

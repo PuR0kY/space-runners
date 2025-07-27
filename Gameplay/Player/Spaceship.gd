@@ -35,16 +35,19 @@ var sync_timer := 0.0
 
 var projectile = load("res://Gameplay/Shooting/projectile.tscn")
 var instance
-var spaceships_config
 
 @onready var camera: Camera3D = $CameraOffset/Camera
 @onready var raycast: RayCast3D = $RayCast
 @onready var camera_offset: SpringArm3D = $CameraOffset
 @onready var visor: Visor = $SubViewportContainer/SubViewport/Node2D as Visor
 
+var ship_id = SpaceshipProvider.selected_ship
+
 func _ready() -> void:
 	GDSync.connect_gdsync_owner_changed(self, owner_changed)
-	spaceships_config = SpaceshipProvider.spaceships[SpaceshipProvider.selected_ship]
+	GDSync.expose_func(set_mesh)
+	GDSync.expose_node(mesh)
+	#GDSync.player_set_data("spaceship_id", ship_id)
 		
 func owner_changed(owner_id: int) -> void:
 	var isOwner := GDSync.is_gdsync_owner(self)
@@ -52,10 +55,9 @@ func owner_changed(owner_id: int) -> void:
 	$SubViewportContainer.visible = isOwner
 
 	if isOwner:
-		var selected_ship_id = SpaceshipProvider.selected_ship
-		rpc("_broadcast_ship_id", selected_ship_id)
-		set_mesh(SpaceshipProvider.spaceships[selected_ship_id])
 		update_hud()
+		set_mesh(SpaceshipProvider.spaceships[ship_id])
+		GDSync.call_func(set_mesh, [SpaceshipProvider.spaceships[ship_id]])
 	
 func set_mesh(config: Dictionary) -> void:
 	health = config["health"]
@@ -67,22 +69,10 @@ func set_mesh(config: Dictionary) -> void:
 	input_response = config["handling"]
 
 	var scene = load(config["ship_scene_path"])
-	var ship = (scene as PackedScene).instantiate()
+	var ship = GDSync.multiplayer_instantiate((scene as PackedScene), mesh, true, [], true)
 	mesh.add_child(ship)
 	mesh_offset_transform = mesh.transform
-	
-@rpc("any_peer", "call_local", "reliable")
-func _broadcast_ship_id(ship_id: String) -> void:
-	var sender_id = get_multiplayer().get_remote_sender_id()
-	if sender_id == multiplayer.get_unique_id():
-		return  # Je to zpráva od nás, ignoruj
 
-	if not SpaceshipProvider.spaceships.has(ship_id):
-		push_warning("Unknown ship_id from peer: " + ship_id)
-		return
-
-	var config = SpaceshipProvider.spaceships[ship_id]
-	set_mesh(config)
 
 func get_input(delta):
 	# Buy menu

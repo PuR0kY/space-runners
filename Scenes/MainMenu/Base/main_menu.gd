@@ -16,6 +16,7 @@ func _on_hangar_pressed() -> void:
 func spawn_space() -> void:
 	space_instance = space.instantiate()
 	$"..".add_child(space_instance)
+	(space_instance as Space).setup_generators()
 
 func _on_play_pressed() -> void:
 	spawn_space()
