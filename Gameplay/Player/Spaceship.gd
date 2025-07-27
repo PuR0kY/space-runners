@@ -70,7 +70,6 @@ func set_mesh(config: Dictionary) -> void:
 
 	var scene = load(config["ship_scene_path"])
 	var ship = GDSync.multiplayer_instantiate((scene as PackedScene), mesh, true, [], true)
-	mesh.add_child(ship)
 	mesh_offset_transform = mesh.transform
 
 
