@@ -145,6 +145,7 @@ func _process(_delta: float) -> void:
 func shoot():
 	bullet = GDSync.multiplayer_instantiate(projectile, get_parent(), true, [], true)
 	bullet.ship_speed = forward_speed
+	print("Setting damage of value: ", damage, " to projectile")
 	bullet.damage = damage
 	# TODO: Raycast should be determined of ship type. Some ships are much bigger
 	bullet.position = raycast.global_position
