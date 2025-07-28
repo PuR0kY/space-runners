@@ -143,6 +143,8 @@ func _process(_delta: float) -> void:
 		
 	# Only local authority controls the ship
 	if Input.is_action_just_pressed("shoot"):
+		 # TODO: Bug, pokud to tu není, solo hráč nestřílí,
+		# pokud to tu je, tak po připojení dalšího hráče střílíme 2x...
 		shoot()
 		GDSync.call_func(shoot)
 
@@ -154,7 +156,7 @@ func shoot():
 	bullet.ship_speed = forward_speed
 	print("Setting damage of value: ", damage, " to projectile")
 	bullet.damage = damage
-	# TODO: Raycast should be determined of ship type. Some ships are much bigger
+	# TODO: Raycast position should be determined of ship type. Some ships are much bigger
 	bullet.position = raycast.global_position
 	bullet.transform.basis = raycast.global_transform.basis
 	
