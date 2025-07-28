@@ -1,6 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c26416m4cg3hg"]
+[gd_scene load_steps=9 format=3 uid="uid://c26416m4cg3hg"]
 
 [ext_resource type="Texture2D" uid="uid://pnc3w3f4sfhd" path="res://Scenes/Space/sun_texture.jpg" id="1_iveel"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwwiw"]
+albedo_color = Color(0.839216, 0.756863, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0.152941, 1)
 
 [sub_resource type="Shader" id="Shader_iveel"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable.mono's StandardMaterial3D.
@@ -121,7 +126,9 @@ _data = {
 }
 
 [node name="Node3D" type="MeshInstance3D"]
-cast_shadow = 0
+material_overlay = SubResource("StandardMaterial3D_iwwiw")
+gi_mode = 2
+visibility_range_end = 4096.0
 mesh = SubResource("SphereMesh_yo8xk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

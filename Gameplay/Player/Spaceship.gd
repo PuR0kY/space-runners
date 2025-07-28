@@ -33,8 +33,8 @@ var bullet: Projectile
 
 @onready var mesh: Node3D = $Mesh
 @onready var camera: Camera3D = $CameraOffset/Camera
-@onready var raycast: RayCast3D = $RayCast
-@onready var camera_offset: SpringArm3D = $CameraOffset
+@onready var raycast: RayCast3D = 	$CameraOffset/Camera/RayCast
+@onready var camera_offset: CameraArm = $CameraOffset
 @onready var visor: Visor = $SubViewportContainer/SubViewport/Node2D as Visor
 
 # Player Header UI
@@ -73,7 +73,7 @@ func set_mesh(config: Dictionary) -> void:
 	var scene = load(config["ship_scene_path"])
 	GDSync.multiplayer_instantiate((scene as PackedScene), mesh, true, [], true)
 	mesh_offset_transform = mesh.transform
-	
+
 	# player tag setup
 	# TODO: Do budoucna asi budou muset být dva,
 	# jeden zelený a jeden červený a podle nějakého příznaku isEnemy zobrazovat jeden nebo druhý
@@ -85,6 +85,9 @@ func set_mesh(config: Dictionary) -> void:
 	visor.set_health(health, true)
 
 func get_input(delta):
+	if Input.is_action_pressed("combat_mode"):
+		visor.crosshair.visible = camera_offset.combat_mode
+	
 	# Buy menu
 	if Input.is_action_just_pressed("buy_action"):
 		is_buy_menu_opened = !is_buy_menu_opened # negace ( "!" ) : přehodí hodnotu na opačnou
@@ -140,9 +143,13 @@ func _process(_delta: float) -> void:
 		
 	# Only local authority controls the ship
 	if Input.is_action_just_pressed("shoot"):
+		shoot()
 		GDSync.call_func(shoot)
 
 func shoot():
+	if not camera_offset.combat_mode:
+		return
+
 	bullet = GDSync.multiplayer_instantiate(projectile, get_parent(), true, [], true)
 	bullet.ship_speed = forward_speed
 	print("Setting damage of value: ", damage, " to projectile")

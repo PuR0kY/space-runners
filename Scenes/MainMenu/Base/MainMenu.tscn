@@ -1,18 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8fb3ba20ieei"]
+[gd_scene load_steps=8 format=3 uid="uid://b8fb3ba20ieei"]
 
 [ext_resource type="Script" uid="uid://bbyg5unfxrow6" path="res://Scenes/MainMenu/Base/main_menu.gd" id="1_qfbau"]
+[ext_resource type="Texture2D" uid="uid://n6cgovwksu0r" path="res://textures/space_nebula_6k.jpg" id="2_5bohy"]
+[ext_resource type="Texture2D" uid="uid://cysqeb5egjye4" path="res://textures/logo2.png" id="2_jlgqb"]
 [ext_resource type="Script" uid="uid://hau11dv3t1t0" path="res://Scenes/MainMenu/ShipPickingScene/picking_scene.gd" id="2_nwlhp"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nwlhp"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_j2qir"]
+panorama = ExtResource("2_5bohy")
 
-[sub_resource type="Sky" id="Sky_jlgqb"]
-sky_material = SubResource("ProceduralSkyMaterial_nwlhp")
+[sub_resource type="Sky" id="Sky_t63vg"]
+sky_material = SubResource("PanoramaSkyMaterial_j2qir")
 
 [sub_resource type="Environment" id="Environment_5bohy"]
 background_mode = 2
-sky = SubResource("Sky_jlgqb")
+sky = SubResource("Sky_t63vg")
 tonemap_mode = 2
 
 [node name="MainMenu" type="Node3D"]
@@ -25,104 +26,107 @@ environment = SubResource("Environment_5bohy")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Ship" type="Node3D" parent="."]
-
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.598051, 0.3754, -0.708103, 0.119313, 0.831971, 0.541838, 0.792527, -0.408533, 0.452771, -5.42895, 8.48232, 7.8549)
+transform = Transform3D(-0.928578, 0.0430805, -0.368629, -0.126134, 0.897488, 0.422618, 0.349046, 0.438931, -0.827953, 4, 5, -13)
 
 [node name="UI" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 
 [node name="Panel" type="Panel" parent="UI"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 80.0
-grow_horizontal = 2
+custom_minimum_size = Vector2(400, 1080)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 1080.0
 
 [node name="TOP MENU" type="GridContainer" parent="UI/Panel"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -167.0
-offset_right = 167.0
-offset_bottom = 80.0
+anchor_bottom = 0.5
+offset_left = -206.5
+offset_top = 60.0
+offset_right = 193.5
+offset_bottom = 460.0
 grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 5
 
 [node name="HANGAR" type="Button" parent="UI/Panel/TOP MENU"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(400, 80)
 layout_direction = 2
 layout_mode = 2
 text = "HANGAR"
 
 [node name="HOST" type="Button" parent="UI/Panel/TOP MENU"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(400, 80)
 layout_direction = 2
 layout_mode = 2
-text = "HOST"
-
-[node name="JOIN" type="Button" parent="UI/Panel/TOP MENU"]
-custom_minimum_size = Vector2(80, 80)
-layout_direction = 2
-layout_mode = 2
-text = "JOIN
-"
+text = "PLAY"
 
 [node name="SETTINGS" type="Button" parent="UI/Panel/TOP MENU"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(400, 80)
 layout_direction = 2
 layout_mode = 2
 text = "SETTINGS"
 
 [node name="EXIT" type="Button" parent="UI/Panel/TOP MENU"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(400, 80)
 layout_direction = 2
 layout_mode = 2
 text = "EXIT"
 
-[node name="PickingScene" type="Node2D" parent="." node_paths=PackedStringArray("pick_button")]
-visible = false
-position = Vector2(1127, 627)
-script = ExtResource("2_nwlhp")
-pick_button = NodePath("Spaceships/Button2")
+[node name="Logo" type="TextureRect" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.5
+offset_top = 100.0
+offset_right = 867.5
+offset_bottom = 1124.0
+grow_horizontal = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_jlgqb")
 
-[node name="Spaceships" type="Panel" parent="PickingScene"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="Ship" type="Node3D" parent="."]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 2, 0, 1)
+
+[node name="PickingScene" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -499.0
-offset_top = -397.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 405.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_nwlhp")
 
-[node name="Label" type="Label" parent="PickingScene/Spaceships"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "PICK YOUR SHIP:"
-
-[node name="GridContainer" type="GridContainer" parent="PickingScene/Spaceships"]
-custom_minimum_size = Vector2(180, 270)
+[node name="SpaceshipList" type="GridContainer" parent="PickingScene"]
+custom_minimum_size = Vector2(600, 100)
 layout_mode = 1
-offset_left = 10.0
-offset_top = 39.0
-offset_right = 190.0
-offset_bottom = 309.0
-columns = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_right = 450.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 6
 
-[node name="StatsPanel" type="Panel" parent="PickingScene/Spaceships"]
+[node name="StatsPanel" type="Panel" parent="PickingScene"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 1
 anchors_preset = 3
@@ -130,14 +134,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -301.0
-offset_top = -373.0
-offset_right = -1.0
-offset_bottom = -73.0
+offset_left = -320.0
+offset_top = -320.0
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="PickingScene/Spaceships/StatsPanel"]
+[node name="Label" type="Label" parent="PickingScene/StatsPanel"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 6.0
@@ -145,7 +149,7 @@ offset_right = 63.0
 offset_bottom = 29.0
 text = "STATS:"
 
-[node name="health" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+[node name="health" type="Panel" parent="PickingScene/StatsPanel"]
 custom_minimum_size = Vector2(300, 30)
 layout_direction = 2
 layout_mode = 0
@@ -153,13 +157,13 @@ offset_top = 40.0
 offset_right = 300.0
 offset_bottom = 70.0
 
-[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/health"]
+[node name="StatName" type="Label" parent="PickingScene/StatsPanel/health"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "health:"
 
-[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/health"]
+[node name="Value" type="ProgressBar" parent="PickingScene/StatsPanel/health"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -170,7 +174,7 @@ max_value = 200.0
 value = 40.0
 show_percentage = false
 
-[node name="dmg" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+[node name="dmg" type="Panel" parent="PickingScene/StatsPanel"]
 custom_minimum_size = Vector2(300, 30)
 layout_direction = 2
 layout_mode = 0
@@ -179,13 +183,13 @@ offset_top = 82.0
 offset_right = 301.0
 offset_bottom = 112.0
 
-[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/dmg"]
+[node name="StatName" type="Label" parent="PickingScene/StatsPanel/dmg"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "damage: "
 
-[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/dmg"]
+[node name="Value" type="ProgressBar" parent="PickingScene/StatsPanel/dmg"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -195,7 +199,7 @@ grow_vertical = 2
 value = 40.0
 show_percentage = false
 
-[node name="max_speed" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+[node name="max_speed" type="Panel" parent="PickingScene/StatsPanel"]
 custom_minimum_size = Vector2(300, 30)
 layout_direction = 2
 layout_mode = 0
@@ -203,13 +207,13 @@ offset_top = 123.0
 offset_right = 300.0
 offset_bottom = 153.0
 
-[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/max_speed"]
+[node name="StatName" type="Label" parent="PickingScene/StatsPanel/max_speed"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "max speed: "
 
-[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/max_speed"]
+[node name="Value" type="ProgressBar" parent="PickingScene/StatsPanel/max_speed"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -220,7 +224,7 @@ max_value = 2000.0
 value = 40.0
 show_percentage = false
 
-[node name="handling" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+[node name="handling" type="Panel" parent="PickingScene/StatsPanel"]
 custom_minimum_size = Vector2(300, 30)
 layout_direction = 2
 layout_mode = 0
@@ -229,13 +233,13 @@ offset_top = 164.0
 offset_right = 302.0
 offset_bottom = 194.0
 
-[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/handling"]
+[node name="StatName" type="Label" parent="PickingScene/StatsPanel/handling"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "handling: "
 
-[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/handling"]
+[node name="Value" type="ProgressBar" parent="PickingScene/StatsPanel/handling"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -246,7 +250,7 @@ max_value = 5.0
 value = 5.0
 show_percentage = false
 
-[node name="fire_rate" type="Panel" parent="PickingScene/Spaceships/StatsPanel"]
+[node name="fire_rate" type="Panel" parent="PickingScene/StatsPanel"]
 custom_minimum_size = Vector2(300, 30)
 layout_direction = 2
 layout_mode = 0
@@ -255,13 +259,13 @@ offset_top = 205.0
 offset_right = 302.0
 offset_bottom = 235.0
 
-[node name="StatName" type="Label" parent="PickingScene/Spaceships/StatsPanel/fire_rate"]
+[node name="StatName" type="Label" parent="PickingScene/StatsPanel/fire_rate"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "fire rate: "
 
-[node name="Value" type="ProgressBar" parent="PickingScene/Spaceships/StatsPanel/fire_rate"]
+[node name="Value" type="ProgressBar" parent="PickingScene/StatsPanel/fire_rate"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -272,16 +276,6 @@ max_value = 200.0
 value = 40.0
 show_percentage = false
 
-[node name="Button2" type="Button" parent="PickingScene/Spaceships"]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 338.0
-offset_right = 407.0
-offset_bottom = 375.0
-text = "PICK SHIP"
-
 [connection signal="pressed" from="UI/Panel/TOP MENU/HANGAR" to="." method="_on_hangar_pressed"]
 [connection signal="pressed" from="UI/Panel/TOP MENU/HOST" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="UI/Panel/TOP MENU/JOIN" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="UI/Panel/TOP MENU/EXIT" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="PickingScene/Spaceships/Button2" to="PickingScene" method="on_pick_click"]

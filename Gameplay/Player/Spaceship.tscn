@@ -45,9 +45,9 @@ process_thread_group_order = 0
 process_thread_messages = 2
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.25, -0.32)
-collision_mask = 3
-spring_length = 0.05
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.8, -0.32)
+collision_mask = 0
+spring_length = 0.1
 script = ExtResource("4_axj8w")
 mouse_sensitivity = 0.002
 
@@ -56,11 +56,11 @@ keep_aspect = 0
 cull_mask = 3
 current = true
 fov = 80.0
-near = 0.005
-far = 10000.0
+near = 0.1
+far = 40000.0
 
-[node name="RayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -6.87806)
+[node name="RayCast" type="RayCast3D" parent="CameraOffset/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39935e-07, -0.2, -7.32)
 target_position = Vector3(0, 0, -1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -88,6 +88,7 @@ player = NodePath("../../..")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 
 [node name="Bob2" parent="Mesh" instance_placeholder="res://Gameplay/Spaceships/Bob/glTF/Bob.gltf"]
+visible = false
 
 [node name="PropertySynchronizer" type="Node" parent="."]
 script = ExtResource("4_cp0o5")

@@ -19,11 +19,23 @@ privateKey="ad7486874883a134"
 config/name="SpaceRunners"
 run/main_scene="uid://bi5ffrduaryvp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="uid://cu762d2ui1vyy"
+config/windows_native_icon="res://textures/icon.ico"
 
 [autoload]
 
 GDSync="*res://addons/GD-Sync/MultiplayerClient.gd"
 SpaceshipProvider="*res://Gameplay/SpaceshipProvider.gd"
+
+[compression]
+
+formats/zstd/long_distance_matching=true
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/initial_position_type=0
 
 [dotnet]
 
@@ -105,8 +117,14 @@ buy_action={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
 ]
 }
+combat_mode={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(153, 22),"global_position":Vector2(162, 70),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+limits/spatial_indexer/threaded_cull_minimum_instances=4000

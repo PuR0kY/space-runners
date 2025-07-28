@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var picking_scene: Node2D = $PickingScene
+@onready var picking_scene: Control = $PickingScene
 var space = preload("res://Scenes/Space/Space.tscn")
 var space_instance
 
