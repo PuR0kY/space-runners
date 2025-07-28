@@ -34,7 +34,7 @@
   },
   "Dispatcher": {
 	"health": 75,
-	"damage": 60,
+	"damage": 40,
 	"magazine_size": 600,
 	"fire_rate": 80,
 	"max_speed": 1500,
@@ -45,7 +45,7 @@
   },
   "Executioner": {
 	"health": 110,
-	"damage": 80,
+	"damage": 45,
 	"magazine_size": 300,
 	"fire_rate": 150,
 	"max_speed": 900,

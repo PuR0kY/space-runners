@@ -1,5 +1,6 @@
 class_name Spaceship extends CharacterBody3D
 
+# Match stats
 var orb_count = 0
 var credit_count = 0
 var has_atomic_missile := false
@@ -11,7 +12,7 @@ var roll_speed = 1.9
 var yaw_speed = 1.25
 
 # Values to be loaded from JSON
-var health
+var health = 100.0
 var damage
 var magazine_size
 var fire_rate
@@ -27,34 +28,35 @@ var pitch_input = 0.0
 var roll_input = 0.0
 var yaw_input = 0.0
 
-var target_basis = Basis()
-var target_position = Vector3()
-var sync_timer := 0.0
+var projectile = load("res://Gameplay/Shooting/projectile.tscn")
+var bullet: Projectile
 
 @onready var mesh: Node3D = $Mesh
-
-var projectile = load("res://Gameplay/Shooting/projectile.tscn")
-var instance
-
 @onready var camera: Camera3D = $CameraOffset/Camera
-@onready var raycast: RayCast3D = $RayCast
-@onready var camera_offset: SpringArm3D = $CameraOffset
+@onready var raycast: RayCast3D = 	$CameraOffset/Camera/RayCast
+@onready var camera_offset: CameraArm = $CameraOffset
 @onready var visor: Visor = $SubViewportContainer/SubViewport/Node2D as Visor
+
+# Player Header UI
+@onready var player_tag: Sprite3D = $PlayerTag
+@onready var health_bar: ProgressBar = $PlayerTag/SubViewport/HealthBar
+@onready var player_name: Label = $PlayerTag/SubViewport/PlayerName
 
 var ship_id = SpaceshipProvider.selected_ship
 
 func _ready() -> void:
 	GDSync.connect_gdsync_owner_changed(self, owner_changed)
 	GDSync.expose_func(set_mesh)
-	GDSync.expose_node(mesh)
-	#GDSync.player_set_data("spaceship_id", ship_id)
-		
-func owner_changed(owner_id: int) -> void:
+	GDSync.expose_func(shoot)
+	GDSync.expose_func(deal_damage)
+
+func owner_changed(_owner_id: int) -> void:
 	var isOwner := GDSync.is_gdsync_owner(self)
 	camera.current = isOwner
-	$SubViewportContainer.visible = isOwner
+	visor.visible = isOwner
 
 	if isOwner:
+		player_tag.visible = false # we dont want to see our own header
 		update_hud()
 		set_mesh(SpaceshipProvider.spaceships[ship_id])
 		GDSync.call_func(set_mesh, [SpaceshipProvider.spaceships[ship_id]])
@@ -69,11 +71,23 @@ func set_mesh(config: Dictionary) -> void:
 	input_response = config["handling"]
 
 	var scene = load(config["ship_scene_path"])
-	var ship = GDSync.multiplayer_instantiate((scene as PackedScene), mesh, true, [], true)
+	GDSync.multiplayer_instantiate((scene as PackedScene), mesh, true, [], true)
 	mesh_offset_transform = mesh.transform
 
+	# player tag setup
+	# TODO: Do budoucna asi budou muset být dva,
+	# jeden zelený a jeden červený a podle nějakého příznaku isEnemy zobrazovat jeden nebo druhý
+	health_bar.max_value = health
+	health_bar.value = health
+	player_name.text = ship_id
+	
+	# Visor update
+	visor.set_health(health, true)
 
 func get_input(delta):
+	if Input.is_action_pressed("combat_mode"):
+		visor.crosshair.visible = camera_offset.combat_mode
+	
 	# Buy menu
 	if Input.is_action_just_pressed("buy_action"):
 		is_buy_menu_opened = !is_buy_menu_opened # negace ( "!" ) : přehodí hodnotu na opačnou
@@ -84,7 +98,6 @@ func get_input(delta):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
-	
 	# Movement
 	if Input.is_action_pressed("move_forward"):
 		forward_speed = clamp(forward_speed + acceleration * delta, 0, max_speed)
@@ -118,13 +131,9 @@ func update_hud() -> void:
 	visor.set_credits_count(credit_count)
 	visor.set_speed(forward_speed)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !GDSync.is_gdsync_owner(self):
 		return;
-		
-	var fps = Engine.get_frames_per_second()
-	var lerp_interval = velocity / fps
-	var lerp_position = global_transform.origin + lerp_interval
 
 	mesh.global_transform = global_transform * mesh_offset_transform
 	visor.set_speed(forward_speed)
@@ -132,20 +141,37 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 		
-@rpc("any_peer", "call_local", "reliable")
-func _shoot():
-	instance = projectile.instantiate()
-	instance.ship_speed = forward_speed
-	instance.position = raycast.global_position
-	instance.transform.basis = raycast.global_transform.basis
-	get_parent().add_child(instance)
+	# Only local authority controls the ship
+	if Input.is_action_just_pressed("shoot"):
+		 # TODO: Bug, pokud to tu není, solo hráč nestřílí,
+		# pokud to tu je, tak po připojení dalšího hráče střílíme 2x...
+		shoot()
+		GDSync.call_func(shoot)
+
+func shoot():
+	if not camera_offset.combat_mode:
+		return
+
+	bullet = GDSync.multiplayer_instantiate(projectile, get_parent(), true, [], true)
+	bullet.ship_speed = forward_speed
+	print("Setting damage of value: ", damage, " to projectile")
+	bullet.damage = damage
+	# TODO: Raycast position should be determined of ship type. Some ships are much bigger
+	bullet.position = raycast.global_position
+	bullet.transform.basis = raycast.global_transform.basis
+	
+func send_damage_dealt(dmg: int) -> void:
+	GDSync.call_func(deal_damage, [dmg], true)
+	
+func deal_damage(dmg: int) -> void:
+	# TODO: Shield logic
+	health -= dmg
+	visor.set_health(health, false)
+	health_bar.value = health
+	# TODO: Kill logic
 
 func _physics_process(delta: float) -> void:
 	if GDSync.is_gdsync_owner(self):
-		# Only local authority controls the ship
-		if Input.is_action_just_pressed("shoot"):
-			rpc("_shoot")
-		
 		get_input(delta)
 		
 		# Rotation
@@ -157,24 +183,3 @@ func _physics_process(delta: float) -> void:
 		# Calculate velocity and move
 		velocity = -transform.basis.z.normalized() * forward_speed
 		move_and_slide()
-
-		# Sync every 100ms
-		sync_timer += delta
-		if sync_timer > 0.1:
-			sync_timer = 0.0
-			rpc("sync_position", global_transform.basis, global_transform.origin, velocity)
-
-	if !GDSync.is_gdsync_owner(self):
-		global_transform.basis = global_transform.basis.slerp(target_basis.orthonormalized(), delta * 5.0).orthonormalized()
-		global_transform.origin = global_transform.origin.lerp(target_position, delta * 5.0)
-		return
-	
-	
-@rpc("authority", "call_remote", "unreliable")
-func sync_position(new_basis: Basis, new_position: Vector3, new_velocity: Vector3):
-	if GDSync.is_gdsync_owner(self):
-		return
-
-	target_basis = new_basis
-	target_position = new_position
-	velocity = new_velocity

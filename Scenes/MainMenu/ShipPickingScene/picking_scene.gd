@@ -1,14 +1,21 @@
-extends Node2D
-@onready var grid_container: GridContainer = $Spaceships/GridContainer
+extends Control
+@onready var grid_container: GridContainer = $SpaceshipList
 # Load the file content as a string
 # health
-@onready var health_value: ProgressBar = $Spaceships/StatsPanel/health/Value
-@onready var dmg_value: ProgressBar = $Spaceships/StatsPanel/dmg/Value
-@onready var speed_value: ProgressBar = $Spaceships/StatsPanel/max_speed/Value
-@onready var handling_value: ProgressBar = $Spaceships/StatsPanel/handling/Value
-@onready var fire_rate_value: ProgressBar = $Spaceships/StatsPanel/fire_rate/Value
-@export var pick_button: Button
+@onready var health_value: ProgressBar = $StatsPanel/health/Value
+@onready var dmg_value: ProgressBar = $StatsPanel/dmg/Value
+@onready var speed_value: ProgressBar = $StatsPanel/max_speed/Value
+@onready var handling_value: ProgressBar = $StatsPanel/handling/Value
+@onready var fire_rate_value: ProgressBar = $StatsPanel/fire_rate/Value
 @onready var ship: Node3D = $"../Ship"
+
+@onready var stat_bars := {
+	"health": health_value,
+	"damage": dmg_value,
+	"max_speed": speed_value,
+	"handling": handling_value,
+	"fire_rate": fire_rate_value
+}
 
 signal Spawn
 
@@ -26,16 +33,19 @@ func _ready() -> void:
 			card.set_data(spaceships[spaceship], spaceship)
 			card.onSelected.connect(set_stats)
 			
+			
+func smooth_set_progressbar(bar: ProgressBar, new_value: float, duration := 0.3):
+	var t := create_tween()
+	t.tween_property(bar, "value", new_value, duration).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
 func set_stats(data: Dictionary, name: String) -> void:
-	pick_button.text = "Pick " + name + "!"
 	SpaceshipProvider.selected_ship = name
 	print(SpaceshipProvider.selected_ship, " selected!")
 
-	health_value.value = data["health"]
-	dmg_value.value = data["damage"]
-	speed_value.value = data["max_speed"]
-	handling_value.value = data["handling"]
-	fire_rate_value.value = data["fire_rate"]
+	for stat_name in stat_bars.keys():
+		if data.has(stat_name):
+			smooth_set_progressbar(stat_bars[stat_name], data[stat_name])
+
 	spawn_ship_mesh(data)
 
 func spawn_ship_mesh(data: Dictionary) -> void:
@@ -48,6 +58,3 @@ func spawn_ship_mesh(data: Dictionary) -> void:
 	var scene = load(scene_path)
 	var instance = scene.instantiate()
 	ship.add_child(instance)
-
-func on_pick_click() -> void:
-	hide()

@@ -1,19 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpangaxoa2sga"]
+[gd_scene load_steps=10 format=3 uid="uid://dpangaxoa2sga"]
 
 [ext_resource type="Script" uid="uid://cwe2jdf462it1" path="res://Gameplay/Player/Spaceship.gd" id="1_p8lcy"]
 [ext_resource type="Script" uid="uid://bd1ht5l48t8y3" path="res://Gameplay/Player/camera_arm.gd" id="4_axj8w"]
 [ext_resource type="Script" uid="uid://b3gmovsb45wqc" path="res://addons/GD-Sync/Scripts/Types/PropertySynchronizer.gd" id="4_cp0o5"]
 [ext_resource type="PackedScene" uid="uid://dfwjonxtr6eox" path="res://Gameplay/HUD/hud.tscn" id="5_4biqu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q1owq"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_cp0o5"]
+radius = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cp0o5"]
+viewport_path = NodePath("PlayerTag/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5pfk"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 0.503)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp0o5"]
+bg_color = Color(1.44392e-06, 0.720595, 0.322342, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_cp0o5"]
+font_size = 82
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_p8lcy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.60622)
-shape = SubResource("BoxShape3D_q1owq")
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -0.29025)
+shape = SubResource("SphereShape3D_cp0o5")
 
 [node name="CameraOffset" type="SpringArm3D" parent="."]
 process_thread_group = 1
@@ -21,9 +45,9 @@ process_thread_group_order = 0
 process_thread_messages = 2
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.25, -0.32)
-collision_mask = 3
-spring_length = 0.05
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.8, -0.32)
+collision_mask = 0
+spring_length = 0.1
 script = ExtResource("4_axj8w")
 mouse_sensitivity = 0.002
 
@@ -32,11 +56,11 @@ keep_aspect = 0
 cull_mask = 3
 current = true
 fov = 80.0
-near = 0.005
-far = 10000.0
+near = 0.1
+far = 40000.0
 
-[node name="RayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.5)
+[node name="RayCast" type="RayCast3D" parent="CameraOffset/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39935e-07, -0.2, -7.32)
 target_position = Vector3(0, 0, -1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -63,6 +87,9 @@ player = NodePath("../../..")
 [node name="Mesh" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 
+[node name="Bob2" parent="Mesh" instance_placeholder="res://Gameplay/Spaceships/Bob/glTF/Bob.gltf"]
+visible = false
+
 [node name="PropertySynchronizer" type="Node" parent="."]
 script = ExtResource("4_cp0o5")
 broadcast = 2
@@ -73,3 +100,48 @@ properties = PackedStringArray("global_position", "global_rotation")
 interpolated = true
 interpolation_speed = 60.0
 metadata/_custom_type_script = "uid://b3gmovsb45wqc"
+
+[node name="PlayerTag" type="Sprite3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.54524, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_cp0o5")
+
+[node name="SubViewport" type="SubViewport" parent="PlayerTag"]
+transparent_bg = true
+size = Vector2i(1000, 300)
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerTag/SubViewport"]
+custom_minimum_size = Vector2(800, 60)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -13.5
+offset_right = 40.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_m5pfk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cp0o5")
+step = 1.0
+value = 33.0
+show_percentage = false
+
+[node name="PlayerName" type="Label" parent="PlayerTag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -140.0
+offset_right = 157.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player 1"
+label_settings = SubResource("LabelSettings_cp0o5")
+horizontal_alignment = 1
