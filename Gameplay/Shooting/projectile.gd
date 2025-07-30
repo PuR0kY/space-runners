@@ -16,7 +16,8 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	if ray_cast_3d.is_colliding() && hit_count == 0:
 		var collided_object = ray_cast_3d.get_collider()
-		collided_object.send_damage_dealt(damage)
+		if collided_object is Spaceship:
+			collided_object.send_damage_dealt(damage)
 		hit_count += 1
 		print("dealt damage of: ", damage, "to spaceship: ", collided_object)
 		gpu_particles_3d.emitting = true
