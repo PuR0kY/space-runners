@@ -16,11 +16,11 @@ privateKey="ad7486874883a134"
 
 [application]
 
-config/name="SpaceRunners"
+config/name="Space Pirates"
 run/main_scene="uid://bi5ffrduaryvp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="uid://cu762d2ui1vyy"
-config/windows_native_icon="res://textures/icon.ico"
+config/icon="uid://b0pfgroay2ro1"
+config/windows_native_icon="res://textures/spacePirates.ico"
 
 [autoload]
 

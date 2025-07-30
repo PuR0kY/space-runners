@@ -4,7 +4,7 @@ class_name Visor extends Node2D
 @onready var orbs: Label = $Orbs
 @onready var buy_menu: Panel = $BuyMenu
 @onready var health_bar: ProgressBar = $VisorOverlay/HealthBar
-@onready var crosshair: Marker2D = $Crosshair
+@onready var crosshair: TextureRect = $Crosshair
 
 @export var player: CharacterBody3D
 var prev_rotation: Vector2
