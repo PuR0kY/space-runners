@@ -19,12 +19,11 @@ func toggle_combat_mode():
 	var t = create_tween()
 	if combat_mode:
 		zoom_index = 0
-		t.tween_property(self, "spring_length", camera_zoom_levels[zoom_index], tween_speed)
-		t.tween_property(camera, "fov", camera_fov_levels[zoom_index], tween_speed)
 	else:
 		zoom_index = 1
-		t.tween_property(self, "spring_length", camera_zoom_levels[zoom_index], tween_speed)
-		t.tween_property(camera, "fov", camera_fov_levels[zoom_index], tween_speed)
+		
+	t.tween_property(self, "spring_length", camera_zoom_levels[zoom_index], tween_speed)
+	t.tween_property(camera, "fov", camera_fov_levels[zoom_index], tween_speed)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("combat_mode"):
@@ -37,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if zoom_index == 0:
 			rotation.y = clamp(rotation.y, -PI/12, PI/12)
 			rotation.x = clamp(rotation.x, -PI/16, PI/8)
-		else:
+		if zoom_index == 1:
 			rotation.x = clamp(rotation.x, -PI/8, PI/2)
 		
 	if event.is_action_pressed("toggle_mouse_capture"):
