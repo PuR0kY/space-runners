@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PlanetNoise" load_steps=4 format=3 uid="uid://bqk5ixpi8f2gc"]
+
+[ext_resource type="Script" uid="uid://bbg710foqgnx3" path="res://Scenes/Space/Space Generation/Planet/planet_noise.gd" id="1_5oufj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5oufj"]
+frequency = 0.006
+fractal_octaves = 6
+fractal_lacunarity = 5.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mj38o"]
+normalize = false
+noise = SubResource("FastNoiseLite_5oufj")
+
+[resource]
+script = ExtResource("1_5oufj")
+min_height = 0.5
+noise_map = SubResource("NoiseTexture2D_mj38o")
+amplitude = 0.6
+metadata/_custom_type_script = "uid://bbg710foqgnx3"

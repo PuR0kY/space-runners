@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c0rer5ogbsc8x" path="res://Scenes/Space/Space Generation/orb_generator.tscn" id="3_kcipt"]
 [ext_resource type="PackedScene" uid="uid://c26416m4cg3hg" path="res://Scenes/Space/sun.tscn" id="4_0u6vc"]
 [ext_resource type="PackedScene" uid="uid://d1py6b07cppw7" path="res://Scenes/Space/Space Generation/Planet/Planet.tscn" id="7_rg6t8"]
-[ext_resource type="Resource" uid="uid://brgu12jwg5v0p" path="res://Scenes/Space/Space Generation/Planet/planet_data.tres" id="8_j6ls2"]
+[ext_resource type="Resource" uid="uid://dqoliddf6yr2w" path="res://Scenes/Space/Space Generation/Planet/planet_1.tres" id="8_j6ls2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rg6t8"]
 panorama = ExtResource("2_sogqe")

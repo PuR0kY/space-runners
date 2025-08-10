@@ -8,8 +8,10 @@ class_name PlanetNoise extends Resource
 
 @export var noise_map: NoiseTexture2D:
 	set(value):
-		noise_map.noise = value.noise
-		emit_changed()
+		noise_map = value
+		if value.noise:
+			noise_map.noise = value.noise
+			emit_changed()
 
 @export var amplitude: float = 10.0:
 	set(value):
