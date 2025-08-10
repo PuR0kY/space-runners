@@ -5,7 +5,7 @@ extends MeshInstance3D
 @export var normal: Vector3
 
 func regenerate_mesh(planet_data: PlanetData):
-	if not planet_data:
+	if planet_data == null:
 		return
 
 	var arrays := []
@@ -37,6 +37,12 @@ func regenerate_mesh(planet_data: PlanetData):
 			var pointOnUnitSphere := pointOnUnitCube.normalized()
 			var pointOnPlanet := planet_data.point_on_planet(pointOnUnitSphere)
 			vertex_array[i] = pointOnPlanet
+			
+			var l = pointOnPlanet.length()
+			if l < planet_data.min_height:
+				planet_data.min_height = l
+			if l > planet_data.max_height:
+				planet_data.max_height = l
 
 			if x != resolution - 1 and y != resolution - 1:
 				index_array[tri_index+2] = i
@@ -71,9 +77,13 @@ func regenerate_mesh(planet_data: PlanetData):
 	arrays[Mesh.ARRAY_TEX_UV] = uv_array
 	arrays[Mesh.ARRAY_INDEX] = index_array
 
-	_update_mesh(arrays)
+	_update_mesh(arrays, planet_data)
 
-func _update_mesh(arrays: Array):
+func _update_mesh(arrays: Array, planet_data: PlanetData):
 	var _mesh := ArrayMesh.new()
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	self.mesh = _mesh
+	
+	(material_override as ShaderMaterial).set_shader_parameter("min_height", planet_data.min_height)
+	(material_override as ShaderMaterial).set_shader_parameter("max_height", planet_data.max_height)
+	(material_override as ShaderMaterial).set_shader_parameter("height_color", planet_data.planet_color)

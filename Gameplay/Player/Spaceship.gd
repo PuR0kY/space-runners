@@ -31,6 +31,8 @@ var yaw_input = 0.0
 var projectile = load("res://Gameplay/Shooting/projectile.tscn")
 var bullet: Projectile
 
+var custom_gravity: Vector3 = Vector3.ZERO
+
 @onready var mesh: Node3D = $Mesh
 @onready var camera: Camera3D = $CameraOffset/Camera
 @onready var raycast: RayCast3D = 	$CameraOffset/Camera/RayCast
@@ -182,4 +184,11 @@ func _physics_process(delta: float) -> void:
 
 		# Calculate velocity and move
 		velocity = -transform.basis.z.normalized() * forward_speed
+		
+		# Gravitační vliv
+		velocity += custom_gravity
+		
 		move_and_slide()
+		
+func set_gravity_force(force: Vector3):
+	custom_gravity = force

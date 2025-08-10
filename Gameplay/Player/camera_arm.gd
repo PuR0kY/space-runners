@@ -2,7 +2,7 @@ class_name CameraArm
 extends SpringArm3D
 
 @export var mouse_sensitivity: float = 0.005
-var camera_zoom_levels = [-2.0, 15.0] # 1st person 0.05 not working properly yet , 3rd person (close), 3rd person (far)
+var camera_zoom_levels = [15.0, 30.0] # 1st person 0.05 not working properly yet , 3rd person (close), 3rd person (far)
 var camera_fov_levels = [100, 80]
 var tween_speed = 0.4
 var zoom_index := 1  # Start at medium (5.0)
