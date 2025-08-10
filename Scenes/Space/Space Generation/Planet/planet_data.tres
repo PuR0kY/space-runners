@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="PlanetData" load_steps=6 format=3 uid="uid://brgu12jwg5v0p"]
+
+[ext_resource type="Script" uid="uid://bbg710foqgnx3" path="res://Scenes/Space/Space Generation/Planet/planet_noise.gd" id="1_21t27"]
+[ext_resource type="Script" uid="uid://b6i5mp4bjxaje" path="res://Scenes/Space/Space Generation/Planet/planet_data.gd" id="1_bj0sa"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_21t27"]
+noise_type = 0
+frequency = 0.0877
+fractal_octaves = 8
+fractal_lacunarity = 0.1
+fractal_gain = 0.9
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ae5ia"]
+bump_strength = 0.0
+normalize = false
+noise = SubResource("FastNoiseLite_21t27")
+
+[sub_resource type="Resource" id="Resource_ae5ia"]
+script = ExtResource("1_21t27")
+min_height = 1.0
+noise_map = SubResource("NoiseTexture2D_ae5ia")
+amplitude = 6.0
+metadata/_custom_type_script = "uid://bbg710foqgnx3"
+
+[resource]
+script = ExtResource("1_bj0sa")
+radius = 120.0
+resolution = 120.0
+planet_noises = Array[ExtResource("1_21t27")]([SubResource("Resource_ae5ia")])
+metadata/_custom_type_script = "uid://b6i5mp4bjxaje"
