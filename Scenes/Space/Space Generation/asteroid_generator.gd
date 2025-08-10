@@ -17,7 +17,7 @@ func generate_asteroid(mesh: Mesh) -> Node:
 	asteroid.mesh_instance = mesh
 	asteroid.transform.origin = _create_vector_in_spawn_radius()
 	asteroid.rotation = _create_random_rotation()
-	var scale = rng.randf_range(0.01, 40.0)
+	var scale = rng.randf_range(0.01, 800.0)
 	asteroid.scale = Vector3(scale, scale, scale)
 	return asteroid
 
