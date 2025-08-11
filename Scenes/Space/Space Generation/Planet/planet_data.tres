@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ct70kg6jye8ck" path="res://Scenes/Space/Space Generation/Planet/planet_2.tres" id="3_2qyhv"]
 
 [sub_resource type="Gradient" id="Gradient_2qyhv"]
-offsets = PackedFloat32Array(0, 0.21447, 0.527132, 0.653747, 0.702842, 1)
+offsets = PackedFloat32Array(0, 0.24424, 0.527132, 0.653747, 0.751152, 1)
 colors = PackedColorArray(0, 0.124034, 0.999999, 1, 5.29438e-07, 0.393712, 0.341928, 1, 0.278431, 0.211765, 0.0862745, 1, 0.823343, 0.768516, 0.751374, 1, 1, 1, 1, 1, 0, 0, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qrqnx"]
@@ -16,7 +16,7 @@ width = 128
 [resource]
 script = ExtResource("1_bj0sa")
 planet_color = SubResource("GradientTexture1D_qrqnx")
-radius = 4.0
-resolution = 50.0
+radius = 4.1
+resolution = 300.0
 planet_noises = Array[ExtResource("1_21t27")]([ExtResource("2_ae5ia"), ExtResource("3_2qyhv")])
 metadata/_custom_type_script = "uid://b6i5mp4bjxaje"

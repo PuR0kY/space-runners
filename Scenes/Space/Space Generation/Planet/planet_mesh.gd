@@ -84,6 +84,6 @@ func _update_mesh(arrays: Array, planet_data: PlanetData):
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	self.mesh = _mesh
 	
-	(material_override as ShaderMaterial).set_shader_parameter("min_height", planet_data.min_height)
-	(material_override as ShaderMaterial).set_shader_parameter("max_height", planet_data.max_height)
-	(material_override as ShaderMaterial).set_shader_parameter("height_color", planet_data.planet_color)
+	(self.mesh.material_override as ShaderMaterial).set_shader_parameter("min_height", planet_data.min_height)
+	(self.mesh.material_override as ShaderMaterial).set_shader_parameter("max_height", planet_data.max_height)
+	(self.mesh.material_override as ShaderMaterial).set_shader_parameter("height_color", planet_data.planet_color)

@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j5a72mmubndp"
+uid="uid://dvtmhwcmudyft"
 path.s3tc="res://.godot/imported/asteroid_2.png-a875718890ba78be437fabaee35f1c09.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Space/Asteroids/asteroid_2.png"
+roughness/src_normal="res://Scenes/Space/Asteroids/asteroid_2.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

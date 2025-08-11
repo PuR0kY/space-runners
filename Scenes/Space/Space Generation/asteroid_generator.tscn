@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0dqjiuwt6gvd"]
 
 [ext_resource type="Script" uid="uid://2ce8rn2058al" path="res://Scenes/Space/Space Generation/asteroid_generator.gd" id="1_cpkyx"]
-[ext_resource type="MeshLibrary" uid="uid://b2gc71dfrpd6" path="res://Scenes/Space/Asteroids/AsteroidsLib.tres" id="2_tc3x7"]
-[ext_resource type="PackedScene" uid="uid://c20ss7mdnx42m" path="res://Scenes/Space/Asteroids/Asteroid.tscn" id="3_7iukq"]
+[ext_resource type="PackedScene" uid="uid://bou1v10ac3wql" path="res://Scenes/Space/Asteroids/Asteroid 1/Asteroid1.tscn" id="2_sbfhv"]
+[ext_resource type="PackedScene" uid="uid://crnx8nhl3f2wf" path="res://Scenes/Space/Asteroids/Asteroid 2/Asteroid2.tscn" id="3_r4c43"]
 
 [sub_resource type="Animation" id="Animation_tc3x7"]
 length = 0.001
@@ -44,8 +44,9 @@ _data = {
 
 [node name="AsteroidGenerator" type="Node3D"]
 script = ExtResource("1_cpkyx")
-mesh_library = ExtResource("2_tc3x7")
-asteroid_scene = ExtResource("3_7iukq")
+asteroid_1 = ExtResource("2_sbfhv")
+asteroid_2 = ExtResource("3_r4c43")
+radius = 5000.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

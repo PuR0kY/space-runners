@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://2i7elscin3el"]
+[gd_scene load_steps=11 format=3 uid="uid://2i7elscin3el"]
 
 [ext_resource type="PackedScene" uid="uid://d0dqjiuwt6gvd" path="res://Scenes/Space/Space Generation/asteroid_generator.tscn" id="1_8xonx"]
 [ext_resource type="Script" uid="uid://tae0ruv25io" path="res://Scenes/Space/space.gd" id="1_rgpdy"]
 [ext_resource type="PackedScene" uid="uid://evmsc8h18cpe" path="res://Scenes/Space/Space Generation/mothership_generator.tscn" id="2_0u6vc"]
 [ext_resource type="Texture2D" uid="uid://n6cgovwksu0r" path="res://textures/space_nebula_6k.jpg" id="2_sogqe"]
 [ext_resource type="PackedScene" uid="uid://c0rer5ogbsc8x" path="res://Scenes/Space/Space Generation/orb_generator.tscn" id="3_kcipt"]
-[ext_resource type="PackedScene" uid="uid://c26416m4cg3hg" path="res://Scenes/Space/sun.tscn" id="4_0u6vc"]
 [ext_resource type="PackedScene" uid="uid://7mgerihp2npk" path="res://Scenes/Space/Space Generation/Planet/Planet.tscn" id="7_rg6t8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rg6t8"]
@@ -49,10 +48,5 @@ shadow_enabled = true
 
 [node name="Orb Generator" parent="Space/PCG/Orbs" instance=ExtResource("3_kcipt")]
 
-[node name="Node3D" parent="Space" instance=ExtResource("4_0u6vc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2419.9, -2660.44)
-
 [node name="Planet" parent="." instance=ExtResource("7_rg6t8")]
-transform = Transform3D(-70.3776, 0, 393.84, 0, 399.94, 0, -393.84, 0, -70.3776, -3000, 0, 0)
-rotation_speed_deg = 0.8
-gravity_strength = 9.8
+transform = Transform3D(185.85, 0, -73.8848, 0, 200.2, 0, 73.8848, 0, 185.85, -10000, 0, 0)

@@ -24,13 +24,24 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	for body in area_3d.get_overlapping_bodies():
 		if body is Spaceship:
-				print("spaceship entered", body.ship_id)
-				var dir: Vector3 = global_transform.origin - body.global_transform.origin
-				var dist: float = dir.length()
+			print("spaceship entered", body.ship_id)
 
-				var force: Vector3 = dir.normalized() * gravity_strength * (1.0 - dist / gravity_range)
-				print("adding force of: ", force)
-				(body as Spaceship).set_gravity_force(force * -1)
+			# Gravitační síla
+			var dir: Vector3 = global_transform.origin - body.global_transform.origin
+			var dist: float = dir.length()
+			var force: Vector3 = dir.normalized() * gravity_strength * (1.0 - dist / gravity_range)
+			body.set_gravity_force(force * -1)
+
+			# Rotace kolem středu planety
+			var center = global_transform.origin
+			var rot_dir = body.global_transform.origin - center
+			var angle = deg_to_rad(rotation_speed_deg) * delta
+			rot_dir = rot_dir.rotated(Vector3.UP, angle)
+			body.global_transform.origin = center + rot_dir
+
+			# Natočení lodi podle rotace planety
+			body.rotate_y(angle)
+
 
 
 func on_data_changed():

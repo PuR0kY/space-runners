@@ -87,9 +87,6 @@ func set_mesh(config: Dictionary) -> void:
 	visor.set_health(health, true)
 
 func get_input(delta):
-	if Input.is_action_pressed("combat_mode"):
-		visor.crosshair.visible = camera_offset.combat_mode
-	
 	# Buy menu
 	if Input.is_action_just_pressed("buy_action"):
 		is_buy_menu_opened = !is_buy_menu_opened # negace ( "!" ) : přehodí hodnotu na opačnou
@@ -151,9 +148,6 @@ func _process(_delta: float) -> void:
 		GDSync.call_func(shoot)
 
 func shoot():
-	if not camera_offset.combat_mode:
-		return
-
 	bullet = GDSync.multiplayer_instantiate(projectile, get_parent(), true, [], true)
 	bullet.ship_speed = forward_speed
 	print("Setting damage of value: ", damage, " to projectile")
