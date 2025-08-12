@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://disfmgexubox8"
 path.s3tc="res://.godot/imported/Bob_Orange.png-734a82705f6cc0613be23d844b65272e.s3tc.ctex"
+path.etc2="res://.godot/imported/Bob_Orange.png-734a82705f6cc0613be23d844b65272e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Gameplay/Spaceships/Bob/Blend/textures/Bob_Orange.png"
-dest_files=["res://.godot/imported/Bob_Orange.png-734a82705f6cc0613be23d844b65272e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Bob_Orange.png-734a82705f6cc0613be23d844b65272e.s3tc.ctex", "res://.godot/imported/Bob_Orange.png-734a82705f6cc0613be23d844b65272e.etc2.ctex"]
 
 [params]
 

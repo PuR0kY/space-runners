@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdn7b43yw81bu"
 path.s3tc="res://.godot/imported/streaks_texture.png-fdcf10cad45dfc0d2a2846083500dcce.s3tc.ctex"
+path.etc2="res://.godot/imported/streaks_texture.png-fdcf10cad45dfc0d2a2846083500dcce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/streaks_texture.png"
-dest_files=["res://.godot/imported/streaks_texture.png-fdcf10cad45dfc0d2a2846083500dcce.s3tc.ctex"]
+dest_files=["res://.godot/imported/streaks_texture.png-fdcf10cad45dfc0d2a2846083500dcce.s3tc.ctex", "res://.godot/imported/streaks_texture.png-fdcf10cad45dfc0d2a2846083500dcce.etc2.ctex"]
 
 [params]
 

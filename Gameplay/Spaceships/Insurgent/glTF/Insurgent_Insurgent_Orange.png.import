@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhjgbrbdbkmi6"
 path.s3tc="res://.godot/imported/Insurgent_Insurgent_Orange.png-a714369afe7433ec1013d72a5ca8ae12.s3tc.ctex"
+path.etc2="res://.godot/imported/Insurgent_Insurgent_Orange.png-a714369afe7433ec1013d72a5ca8ae12.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Gameplay/Spaceships/Insurgent/glTF/Insurgent_Insurgent_Orange.png"
-dest_files=["res://.godot/imported/Insurgent_Insurgent_Orange.png-a714369afe7433ec1013d72a5ca8ae12.s3tc.ctex"]
+dest_files=["res://.godot/imported/Insurgent_Insurgent_Orange.png-a714369afe7433ec1013d72a5ca8ae12.s3tc.ctex", "res://.godot/imported/Insurgent_Insurgent_Orange.png-a714369afe7433ec1013d72a5ca8ae12.etc2.ctex"]
 
 [params]
 

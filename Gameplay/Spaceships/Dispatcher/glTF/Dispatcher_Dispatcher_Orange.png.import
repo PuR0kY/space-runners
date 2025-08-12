@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://5by67oxgivcj"
 path.s3tc="res://.godot/imported/Dispatcher_Dispatcher_Orange.png-7f2f5097a275f540799ede71d948aed6.s3tc.ctex"
+path.etc2="res://.godot/imported/Dispatcher_Dispatcher_Orange.png-7f2f5097a275f540799ede71d948aed6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Gameplay/Spaceships/Dispatcher/glTF/Dispatcher_Dispatcher_Orange.png"
-dest_files=["res://.godot/imported/Dispatcher_Dispatcher_Orange.png-7f2f5097a275f540799ede71d948aed6.s3tc.ctex"]
+dest_files=["res://.godot/imported/Dispatcher_Dispatcher_Orange.png-7f2f5097a275f540799ede71d948aed6.s3tc.ctex", "res://.godot/imported/Dispatcher_Dispatcher_Orange.png-7f2f5097a275f540799ede71d948aed6.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://scawm05jc375"
 path.s3tc="res://.godot/imported/cockpit_emissive.jpg-793c96beef832a4377f3ed69b08a21a4.s3tc.ctex"
+path.etc2="res://.godot/imported/cockpit_emissive.jpg-793c96beef832a4377f3ed69b08a21a4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/cockpit_emissive.jpg"
-dest_files=["res://.godot/imported/cockpit_emissive.jpg-793c96beef832a4377f3ed69b08a21a4.s3tc.ctex"]
+dest_files=["res://.godot/imported/cockpit_emissive.jpg-793c96beef832a4377f3ed69b08a21a4.s3tc.ctex", "res://.godot/imported/cockpit_emissive.jpg-793c96beef832a4377f3ed69b08a21a4.etc2.ctex"]
 
 [params]
 

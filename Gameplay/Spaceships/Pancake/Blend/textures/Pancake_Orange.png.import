@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwh64eiannhvk"
 path.s3tc="res://.godot/imported/Pancake_Orange.png-15d5d7221355c053797cbad89c15d183.s3tc.ctex"
+path.etc2="res://.godot/imported/Pancake_Orange.png-15d5d7221355c053797cbad89c15d183.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Gameplay/Spaceships/Pancake/Blend/textures/Pancake_Orange.png"
-dest_files=["res://.godot/imported/Pancake_Orange.png-15d5d7221355c053797cbad89c15d183.s3tc.ctex"]
+dest_files=["res://.godot/imported/Pancake_Orange.png-15d5d7221355c053797cbad89c15d183.s3tc.ctex", "res://.godot/imported/Pancake_Orange.png-15d5d7221355c053797cbad89c15d183.etc2.ctex"]
 
 [params]
 

@@ -11,7 +11,7 @@ noise = ExtResource("1_mj38o")
 [resource]
 script = ExtResource("1_5oufj")
 use_first_layer_as_mask = false
-min_height = 0.4
+min_height = 0.41
 amplitude = 0.8
 noise_map = SubResource("NoiseTexture2D_mj38o")
 metadata/_custom_type_script = "uid://bbg710foqgnx3"

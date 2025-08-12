@@ -52,7 +52,7 @@ func on_data_changed():
 	for child in get_children():
 		if child is PlanetMeshFace:
 			child.regenerate_mesh(planet_data)
-	print("regenerating...")
+	print("regenerating...", planet_data)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:

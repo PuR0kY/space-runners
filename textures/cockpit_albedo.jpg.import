@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddbc4nihadrfc"
 path.s3tc="res://.godot/imported/cockpit_albedo.jpg-22c4f17c98f4b14ef7c4476104a121f2.s3tc.ctex"
+path.etc2="res://.godot/imported/cockpit_albedo.jpg-22c4f17c98f4b14ef7c4476104a121f2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/cockpit_albedo.jpg"
-dest_files=["res://.godot/imported/cockpit_albedo.jpg-22c4f17c98f4b14ef7c4476104a121f2.s3tc.ctex"]
+dest_files=["res://.godot/imported/cockpit_albedo.jpg-22c4f17c98f4b14ef7c4476104a121f2.s3tc.ctex", "res://.godot/imported/cockpit_albedo.jpg-22c4f17c98f4b14ef7c4476104a121f2.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djm40m04xwbsa"
 path.s3tc="res://.godot/imported/Insurgent_Orange.png-e7fe481a0b355b156db2cecf53b9645e.s3tc.ctex"
+path.etc2="res://.godot/imported/Insurgent_Orange.png-e7fe481a0b355b156db2cecf53b9645e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Gameplay/Spaceships/Insurgent/Blend/textures/Insurgent_Orange.png"
-dest_files=["res://.godot/imported/Insurgent_Orange.png-e7fe481a0b355b156db2cecf53b9645e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Insurgent_Orange.png-e7fe481a0b355b156db2cecf53b9645e.s3tc.ctex", "res://.godot/imported/Insurgent_Orange.png-e7fe481a0b355b156db2cecf53b9645e.etc2.ctex"]
 
 [params]
 

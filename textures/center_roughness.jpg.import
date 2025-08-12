@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv0v2c1sd1txf"
 path.s3tc="res://.godot/imported/center_roughness.jpg-2254cbfaef9247213b9954d602ec8e7a.s3tc.ctex"
+path.etc2="res://.godot/imported/center_roughness.jpg-2254cbfaef9247213b9954d602ec8e7a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/center_roughness.jpg"
-dest_files=["res://.godot/imported/center_roughness.jpg-2254cbfaef9247213b9954d602ec8e7a.s3tc.ctex"]
+dest_files=["res://.godot/imported/center_roughness.jpg-2254cbfaef9247213b9954d602ec8e7a.s3tc.ctex", "res://.godot/imported/center_roughness.jpg-2254cbfaef9247213b9954d602ec8e7a.etc2.ctex"]
 
 [params]
 

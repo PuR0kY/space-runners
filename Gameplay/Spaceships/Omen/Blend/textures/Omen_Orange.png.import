@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0tbpfcc25b36"
 path.s3tc="res://.godot/imported/Omen_Orange.png-fb4bc206be6a955d83e7e5ad80e1966e.s3tc.ctex"
+path.etc2="res://.godot/imported/Omen_Orange.png-fb4bc206be6a955d83e7e5ad80e1966e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Gameplay/Spaceships/Omen/Blend/textures/Omen_Orange.png"
-dest_files=["res://.godot/imported/Omen_Orange.png-fb4bc206be6a955d83e7e5ad80e1966e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Omen_Orange.png-fb4bc206be6a955d83e7e5ad80e1966e.s3tc.ctex", "res://.godot/imported/Omen_Orange.png-fb4bc206be6a955d83e7e5ad80e1966e.etc2.ctex"]
 
 [params]
 

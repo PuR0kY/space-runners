@@ -3,6 +3,7 @@ class_name PlanetMeshFace
 extends MeshInstance3D
 
 @export var normal: Vector3
+var material = load("res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres") as Material
 
 func regenerate_mesh(planet_data: PlanetData):
 	if planet_data == null:
@@ -84,6 +85,8 @@ func _update_mesh(arrays: Array, planet_data: PlanetData):
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	self.mesh = _mesh
 	
-	(self.mesh.material_override as ShaderMaterial).set_shader_parameter("min_height", planet_data.min_height)
-	(self.mesh.material_override as ShaderMaterial).set_shader_parameter("max_height", planet_data.max_height)
-	(self.mesh.material_override as ShaderMaterial).set_shader_parameter("height_color", planet_data.planet_color)
+	material.set_shader_parameter("min_height", planet_data.min_height)
+	material.set_shader_parameter("max_height", planet_data.max_height)
+	material.set_shader_parameter("height_color", planet_data.planet_color)
+
+	_mesh.surface_set_material(0, material)

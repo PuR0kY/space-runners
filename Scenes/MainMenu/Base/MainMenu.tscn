@@ -1,18 +1,21 @@
 [gd_scene load_steps=8 format=3 uid="uid://b8fb3ba20ieei"]
 
 [ext_resource type="Script" uid="uid://bbyg5unfxrow6" path="res://Scenes/MainMenu/Base/main_menu.gd" id="1_qfbau"]
-[ext_resource type="Texture2D" uid="uid://n6cgovwksu0r" path="res://textures/space_nebula_6k.jpg" id="2_5bohy"]
+[ext_resource type="Texture2D" uid="uid://dgcwsqbrn4mrs" path="res://textures/nebula_texture.jpg" id="2_5bohy"]
 [ext_resource type="Script" uid="uid://hau11dv3t1t0" path="res://Scenes/MainMenu/ShipPickingScene/picking_scene.gd" id="2_nwlhp"]
 [ext_resource type="Texture2D" uid="uid://vxiol18wyoh4" path="res://textures/spacePirates_transparent.png" id="3_5bohy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_j2qir"]
+resource_local_to_scene = true
 panorama = ExtResource("2_5bohy")
+filter = false
 
 [sub_resource type="Sky" id="Sky_t63vg"]
 sky_material = SubResource("PanoramaSkyMaterial_j2qir")
 
 [sub_resource type="Environment" id="Environment_5bohy"]
 background_mode = 2
+background_energy_multiplier = 3.22
 sky = SubResource("Sky_t63vg")
 tonemap_mode = 2
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2ha3bxrhaxoj"
 path.s3tc="res://.godot/imported/center_normal.jpg-38632d80b67e015afd3cf5d0ea85434f.s3tc.ctex"
+path.etc2="res://.godot/imported/center_normal.jpg-38632d80b67e015afd3cf5d0ea85434f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/center_normal.jpg"
-dest_files=["res://.godot/imported/center_normal.jpg-38632d80b67e015afd3cf5d0ea85434f.s3tc.ctex"]
+dest_files=["res://.godot/imported/center_normal.jpg-38632d80b67e015afd3cf5d0ea85434f.s3tc.ctex", "res://.godot/imported/center_normal.jpg-38632d80b67e015afd3cf5d0ea85434f.etc2.ctex"]
 
 [params]
 

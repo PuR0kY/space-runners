@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2lbs8uhm6qig"
 path.s3tc="res://.godot/imported/Zenith_Orange.png-db97479e8ca5c0688191e09c01f7f35f.s3tc.ctex"
+path.etc2="res://.godot/imported/Zenith_Orange.png-db97479e8ca5c0688191e09c01f7f35f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Gameplay/Spaceships/Zenith/Blend/textures/Zenith_Orange.png"
-dest_files=["res://.godot/imported/Zenith_Orange.png-db97479e8ca5c0688191e09c01f7f35f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Zenith_Orange.png-db97479e8ca5c0688191e09c01f7f35f.s3tc.ctex", "res://.godot/imported/Zenith_Orange.png-db97479e8ca5c0688191e09c01f7f35f.etc2.ctex"]
 
 [params]
 

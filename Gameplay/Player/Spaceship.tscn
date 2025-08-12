@@ -30,14 +30,13 @@ corner_radius_bottom_left = 24
 font_size = 82
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 collision_layer = 15
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_p8lcy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -0.29025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.29025)
 shape = SubResource("SphereShape3D_cp0o5")
 
 [node name="CameraOffset" type="SpringArm3D" parent="."]

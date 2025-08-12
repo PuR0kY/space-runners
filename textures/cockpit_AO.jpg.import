@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3p3s8pd376rd"
 path.s3tc="res://.godot/imported/cockpit_AO.jpg-096ade2ee0fd82ee45431571f80fad26.s3tc.ctex"
+path.etc2="res://.godot/imported/cockpit_AO.jpg-096ade2ee0fd82ee45431571f80fad26.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/cockpit_AO.jpg"
-dest_files=["res://.godot/imported/cockpit_AO.jpg-096ade2ee0fd82ee45431571f80fad26.s3tc.ctex"]
+dest_files=["res://.godot/imported/cockpit_AO.jpg-096ade2ee0fd82ee45431571f80fad26.s3tc.ctex", "res://.godot/imported/cockpit_AO.jpg-096ade2ee0fd82ee45431571f80fad26.etc2.ctex"]
 
 [params]
 

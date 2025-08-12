@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8qfiq3luwqf0"
 path.s3tc="res://.godot/imported/Executioner_Orange.png-408218386c8130b81d7524b7a5d74c0a.s3tc.ctex"
+path.etc2="res://.godot/imported/Executioner_Orange.png-408218386c8130b81d7524b7a5d74c0a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Gameplay/Spaceships/Executioner/Blend/textures/Executioner_Orange.png"
-dest_files=["res://.godot/imported/Executioner_Orange.png-408218386c8130b81d7524b7a5d74c0a.s3tc.ctex"]
+dest_files=["res://.godot/imported/Executioner_Orange.png-408218386c8130b81d7524b7a5d74c0a.s3tc.ctex", "res://.godot/imported/Executioner_Orange.png-408218386c8130b81d7524b7a5d74c0a.etc2.ctex"]
 
 [params]
 
