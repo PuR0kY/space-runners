@@ -7,6 +7,9 @@ extends Node3D
 @onready var mothership_generator: MothershipGenerator = $"Space/PCG/Motherships/Mothership Generator"
 @onready var orb_generator: OrbGenerator = $"Space/PCG/Orbs/Orb Generator"
 
+func _ready() -> void:
+	pass
+
 func setup_generators() -> void:
 	asteroid_generator.set_seed(seed)
 	asteroid_generator.generate()

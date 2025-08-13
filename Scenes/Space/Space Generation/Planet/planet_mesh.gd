@@ -2,13 +2,12 @@
 class_name PlanetMeshFace
 extends MeshInstance3D
 
+@export var mesh_id: int
 @export var normal: Vector3
+
 var material = load("res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres") as Material
 
-func regenerate_mesh(planet_data: PlanetData):
-	if planet_data == null:
-		return
-
+func regenerate_mesh(_resolution: int, planet_data: PlanetData) -> Array:
 	var arrays := []
 	arrays.resize(Mesh.ARRAY_MAX)
 
@@ -17,7 +16,7 @@ func regenerate_mesh(planet_data: PlanetData):
 	var normal_array := PackedVector3Array()
 	var index_array := PackedInt32Array()
 
-	var resolution: float = planet_data.resolution
+	var resolution: float = (_resolution)
 	var num_vertices: int = resolution * resolution
 	var num_indices: int = (resolution - 1) * (resolution - 1) * 6
 
@@ -77,10 +76,10 @@ func regenerate_mesh(planet_data: PlanetData):
 	arrays[Mesh.ARRAY_NORMAL] = normal_array
 	arrays[Mesh.ARRAY_TEX_UV] = uv_array
 	arrays[Mesh.ARRAY_INDEX] = index_array
+	
+	return arrays
 
-	_update_mesh(arrays, planet_data)
-
-func _update_mesh(arrays: Array, planet_data: PlanetData):
+func update_mesh(planet_data: PlanetData, arrays: Array):
 	var _mesh := ArrayMesh.new()
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	self.mesh = _mesh

@@ -1,6 +1,8 @@
 extends Node3D
+class_name GameManager
 
-var session_seed
+var session_seed = 123456
+var current_lobby
 
 func _ready() -> void:
 	GDSync.connected.connect(connected)
@@ -15,6 +17,9 @@ func connected() -> void:
 	GDSync.lobby_create("TestLobby")
 	pass
 	
+func join_or_create_lobby(lobby_name: String) -> void:
+	GDSync.lobby_create(lobby_name)
+	
 func connection_failed(error) -> void:
 	pass
 	
@@ -23,7 +28,8 @@ func lobby_created(lobby_name: String) -> void:
 	GDSync.lobby_join(lobby_name)
 	
 func lobby_joined(lobby_name: String) -> void:
-	print("Lobby ", lobby_name, " joined!")
+	current_lobby = lobby_name
+	print("Joined lobby: ", lobby_name)
 	
 func lobby_create_failed(lobby_name, err) -> void:
 	print("Failed to create lobby ", lobby_name, err)
