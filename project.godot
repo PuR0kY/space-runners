@@ -45,6 +45,10 @@ project/assembly_name="SpaceRunners"
 
 enabled=PackedStringArray("res://addons/GD-Sync/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_forward={

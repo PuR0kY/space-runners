@@ -52,7 +52,7 @@ func _ready() -> void:
 	generate_lod_async(MID_RESOLUTION)
 	generate_lod_async(CLOSE_RESOLUTION)
 	apply_mesh(OUT_RESOLUTION)
-	save_faces_as_json()
+	#save_faces_as_json()
 		
 func generate_lod_async(resolution: int) -> void:
 	for child in faces:

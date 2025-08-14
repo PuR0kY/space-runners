@@ -1,36 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://2i7elscin3el"]
+[gd_scene load_steps=6 format=3 uid="uid://2i7elscin3el"]
 
 [ext_resource type="PackedScene" uid="uid://d0dqjiuwt6gvd" path="res://Scenes/Space/Space Generation/asteroid_generator.tscn" id="1_8xonx"]
 [ext_resource type="Script" uid="uid://tae0ruv25io" path="res://Scenes/Space/space.gd" id="1_rgpdy"]
 [ext_resource type="PackedScene" uid="uid://evmsc8h18cpe" path="res://Scenes/Space/Space Generation/mothership_generator.tscn" id="2_0u6vc"]
-[ext_resource type="Texture2D" uid="uid://dgcwsqbrn4mrs" path="res://textures/nebula_texture.jpg" id="2_sogqe"]
 [ext_resource type="PackedScene" uid="uid://c0rer5ogbsc8x" path="res://Scenes/Space/Space Generation/orb_generator.tscn" id="3_kcipt"]
 [ext_resource type="PackedScene" uid="uid://7mgerihp2npk" path="res://Scenes/Space/Space Generation/Planet/Planet.tscn" id="7_rg6t8"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rg6t8"]
-panorama = ExtResource("2_sogqe")
-
-[sub_resource type="Sky" id="Sky_j6ls2"]
-sky_material = SubResource("PanoramaSkyMaterial_rg6t8")
-
-[sub_resource type="Environment" id="Environment_020j0"]
-background_mode = 2
-sky = SubResource("Sky_j6ls2")
-tonemap_mode = 2
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0u6vc"]
-dof_blur_far_distance = 8192.0
-
 [node name="Match Level" type="Node3D"]
 script = ExtResource("1_rgpdy")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_020j0")
-camera_attributes = SubResource("CameraAttributesPractical_0u6vc")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
 
 [node name="Space" type="Node3D" parent="."]
 
@@ -49,7 +26,7 @@ shadow_enabled = true
 [node name="Orb Generator" parent="Space/PCG/Orbs" instance=ExtResource("3_kcipt")]
 
 [node name="Planet" parent="Space" instance=ExtResource("7_rg6t8")]
-transform = Transform3D(-298.743, 0, -27.7245, 0, 299.401, 0, 27.7245, 0, -298.743, -10000, 0, 0)
+transform = Transform3D(123.502, 0, 273.163, 0, 299.401, 0, -273.163, 0, 123.502, -10000, 0, 0)
 
 [node name="Planets" type="Node3D" parent="."]
 
