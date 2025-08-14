@@ -5,14 +5,14 @@ extends MeshInstance3D
 @export var mesh_id: int
 @export var normal: Vector3
 @export var planet_data: PlanetData
-
-var material = load("res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres") as Material
-const PLANET_MATERIAL_PATH = "res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres"
-var planet_material: Material
+@export var material: Material
+#const PLANET_MATERIAL_PATH = "res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres"
+#var planet_material: Material
 
 func _ready():
+	pass
 	# Načteme materiál jen jednou při startu
-	planet_material = load(PLANET_MATERIAL_PATH)
+	#planet_material = load(PLANET_MATERIAL_PATH)
 
 func regenerate_mesh(_resolution: int) -> Array:
 	var arrays := []
@@ -90,5 +90,5 @@ func regenerate_mesh(_resolution: int) -> Array:
 func update_mesh(arrays: Array):
 	var _mesh := ArrayMesh.new()
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-	_mesh.surface_set_material(0, planet_material)
+	_mesh.surface_set_material(0, material)
 	self.mesh = _mesh

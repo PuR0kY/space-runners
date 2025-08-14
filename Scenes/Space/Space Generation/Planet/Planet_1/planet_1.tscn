@@ -1,8 +1,33 @@
-[gd_scene load_steps=10 format=4 uid="uid://cw07d5o4x1kw0"]
+[gd_scene load_steps=17 format=4 uid="uid://cw07d5o4x1kw0"]
 
 [ext_resource type="PackedScene" uid="uid://7mgerihp2npk" path="res://Scenes/Space/Space Generation/Planet/Planet.tscn" id="1_4tp47"]
 [ext_resource type="Material" uid="uid://ce68ous2miebp" path="res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres" id="2_oob2o"]
 [ext_resource type="Script" uid="uid://vvopd71ruu5v" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_1.gd" id="2_qblwe"]
+[ext_resource type="Script" uid="uid://bbg710foqgnx3" path="res://Scenes/Space/Space Generation/Planet/planet_noise.gd" id="3_cosc6"]
+[ext_resource type="FastNoiseLite" uid="uid://o3u5qhnij643" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_1_noise.tres" id="4_y25lx"]
+[ext_resource type="FastNoiseLite" uid="uid://dhdnf1dhqpook" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_1_noise_2.tres" id="5_y25lx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7tr43"]
+noise = ExtResource("4_y25lx")
+
+[sub_resource type="Resource" id="Resource_1qv3f"]
+script = ExtResource("3_cosc6")
+use_first_layer_as_mask = false
+min_height = 10.0
+amplitude = 10.0
+noise_map = SubResource("NoiseTexture2D_7tr43")
+metadata/_custom_type_script = "uid://bbg710foqgnx3"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cosc6"]
+noise = ExtResource("5_y25lx")
+
+[sub_resource type="Resource" id="Resource_x2c5r"]
+script = ExtResource("3_cosc6")
+use_first_layer_as_mask = false
+min_height = 10.0
+amplitude = 10.0
+noise_map = SubResource("NoiseTexture2D_cosc6")
+metadata/_custom_type_script = "uid://bbg710foqgnx3"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cosc6"]
 _surfaces = [{
@@ -91,21 +116,28 @@ _surfaces = [{
 [node name="Planet" instance=ExtResource("1_4tp47")]
 transform = Transform3D(-1.01025, 0, 0.0270825, 0, 1, 0, -0.0270825, 0, -1.01025, 0, 0, 0)
 script = ExtResource("2_qblwe")
+planet_noises = Array[ExtResource("3_cosc6")]([SubResource("Resource_1qv3f"), SubResource("Resource_x2c5r")])
 
 [node name="Up" parent="." index="1"]
 mesh = SubResource("ArrayMesh_cosc6")
+material = ExtResource("2_oob2o")
 
 [node name="Down" parent="." index="2"]
 mesh = SubResource("ArrayMesh_y25lx")
+material = ExtResource("2_oob2o")
 
 [node name="Left" parent="." index="3"]
 mesh = SubResource("ArrayMesh_7tr43")
+material = ExtResource("2_oob2o")
 
 [node name="Right" parent="." index="4"]
 mesh = SubResource("ArrayMesh_1qv3f")
+material = ExtResource("2_oob2o")
 
 [node name="Front" parent="." index="5"]
 mesh = SubResource("ArrayMesh_gsdou")
+material = ExtResource("2_oob2o")
 
 [node name="Back" parent="." index="6"]
 mesh = SubResource("ArrayMesh_x2c5r")
+material = ExtResource("2_oob2o")

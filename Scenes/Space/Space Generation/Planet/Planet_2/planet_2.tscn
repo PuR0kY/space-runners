@@ -1,9 +1,31 @@
-[gd_scene load_steps=11 format=4 uid="uid://kifi3pd5cg6x"]
+[gd_scene load_steps=17 format=4 uid="uid://kifi3pd5cg6x"]
 
 [ext_resource type="PackedScene" uid="uid://7mgerihp2npk" path="res://Scenes/Space/Space Generation/Planet/Planet.tscn" id="1_5afn6"]
 [ext_resource type="Script" uid="uid://cawdxra8wea18" path="res://Scenes/Space/Space Generation/Planet/Planet_2/planet_2.gd" id="2_btcxn"]
+[ext_resource type="Script" uid="uid://bbg710foqgnx3" path="res://Scenes/Space/Space Generation/Planet/planet_noise.gd" id="3_yju1f"]
+[ext_resource type="FastNoiseLite" uid="uid://b84kehx6up1dr" path="res://Scenes/Space/Space Generation/Planet/Planet_2/planet_2_noise.tres" id="4_asjl7"]
 [ext_resource type="Resource" uid="uid://b2egchhiqw4yx" path="res://Scenes/Space/Space Generation/Planet/Planet_2/planet_2_data.tres" id="4_btcxn"]
+[ext_resource type="Texture2D" uid="uid://cqtehg62kbd32" path="res://Scenes/Space/Space Generation/Planet/Planet_2/planet_2_noise_2.tres" id="5_g76bi"]
 [ext_resource type="Material" uid="uid://dtiatundggv38" path="res://Scenes/Space/Space Generation/Planet/materials/Planet_2_material.tres" id="5_x445j"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6gbmm"]
+noise = ExtResource("4_asjl7")
+
+[sub_resource type="Resource" id="Resource_ql627"]
+script = ExtResource("3_yju1f")
+use_first_layer_as_mask = false
+min_height = 10.0
+amplitude = 10.0
+noise_map = SubResource("NoiseTexture2D_6gbmm")
+metadata/_custom_type_script = "uid://bbg710foqgnx3"
+
+[sub_resource type="Resource" id="Resource_ahkw3"]
+script = ExtResource("3_yju1f")
+use_first_layer_as_mask = false
+min_height = 10.0
+amplitude = 10.0
+noise_map = ExtResource("5_g76bi")
+metadata/_custom_type_script = "uid://bbg710foqgnx3"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_x445j"]
 _surfaces = [{
@@ -94,27 +116,38 @@ transform = Transform3D(0.531144, 0, 0.860059, 0, 1, 0, -0.860059, 0, 0.531144, 
 script = ExtResource("2_btcxn")
 gravity_strength = 40.0
 gravity_range = 2000.0
+min_height = 99999.0
+max_height = 0.0
+radius = 10.0
+resolution = 50.0
+planet_noises = Array[ExtResource("3_yju1f")]([SubResource("Resource_ql627"), SubResource("Resource_ahkw3")])
 
 [node name="Up" parent="." index="1"]
 mesh = SubResource("ArrayMesh_x445j")
 planet_data = ExtResource("4_btcxn")
+material = ExtResource("5_x445j")
 
 [node name="Down" parent="." index="2"]
 mesh = SubResource("ArrayMesh_jkas8")
 planet_data = ExtResource("4_btcxn")
+material = ExtResource("5_x445j")
 
 [node name="Left" parent="." index="3"]
 mesh = SubResource("ArrayMesh_yju1f")
 planet_data = ExtResource("4_btcxn")
+material = ExtResource("5_x445j")
 
 [node name="Right" parent="." index="4"]
 mesh = SubResource("ArrayMesh_asjl7")
 planet_data = ExtResource("4_btcxn")
+material = ExtResource("5_x445j")
 
 [node name="Front" parent="." index="5"]
 mesh = SubResource("ArrayMesh_g76bi")
 planet_data = ExtResource("4_btcxn")
+material = ExtResource("5_x445j")
 
 [node name="Back" parent="." index="6"]
 mesh = SubResource("ArrayMesh_6gbmm")
 planet_data = ExtResource("4_btcxn")
+material = ExtResource("5_x445j")
