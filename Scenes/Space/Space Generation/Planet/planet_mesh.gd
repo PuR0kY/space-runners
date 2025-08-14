@@ -4,10 +4,17 @@ extends MeshInstance3D
 
 @export var mesh_id: int
 @export var normal: Vector3
+@export var planet_data: PlanetData
 
 var material = load("res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres") as Material
+const PLANET_MATERIAL_PATH = "res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres"
+var planet_material: Material
 
-func regenerate_mesh(_resolution: int, planet_data: PlanetData) -> Array:
+func _ready():
+	# Načteme materiál jen jednou při startu
+	planet_material = load(PLANET_MATERIAL_PATH)
+
+func regenerate_mesh(_resolution: int) -> Array:
 	var arrays := []
 	arrays.resize(Mesh.ARRAY_MAX)
 
@@ -79,13 +86,9 @@ func regenerate_mesh(_resolution: int, planet_data: PlanetData) -> Array:
 	
 	return arrays
 
-func update_mesh(planet_data: PlanetData, arrays: Array):
+
+func update_mesh(arrays: Array):
 	var _mesh := ArrayMesh.new()
 	_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	_mesh.surface_set_material(0, planet_material)
 	self.mesh = _mesh
-	
-	material.set_shader_parameter("min_height", planet_data.min_height)
-	material.set_shader_parameter("max_height", planet_data.max_height)
-	material.set_shader_parameter("height_color", planet_data.planet_color)
-
-	_mesh.surface_set_material(0, material)

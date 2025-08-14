@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dtiatundggv38"]
+
+[ext_resource type="Shader" uid="uid://4nbkjx2xgs4h" path="res://Scenes/Space/Space Generation/Planet/Planet.gdshader" id="1_w7p40"]
+
+[sub_resource type="Gradient" id="Gradient_2qyhv"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.00938967, 0.24424, 0.527132, 0.653747, 0.751152, 1)
+colors = PackedColorArray(0.664546, 0, 0.184927, 1, 1, 0.513726, 0.105882, 1, 0, 0, 0, 1, 0.988235, 0.968627, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qrqnx"]
+gradient = SubResource("Gradient_2qyhv")
+width = 128
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_w7p40")
+shader_parameter/min_height = 4.12
+shader_parameter/max_height = 4.64361
+shader_parameter/height_color = SubResource("GradientTexture1D_qrqnx")

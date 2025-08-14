@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlanetData" load_steps=6 format=3 uid="uid://b2egchhiqw4yx"]
+
+[ext_resource type="Texture2D" uid="uid://1w6yediojuu8" path="res://Scenes/Space/Space Generation/Planet/Planet_2/planet_2_texture.tres" id="1_0wib5"]
+[ext_resource type="Script" uid="uid://bbg710foqgnx3" path="res://Scenes/Space/Space Generation/Planet/planet_noise.gd" id="1_847gv"]
+[ext_resource type="Resource" uid="uid://bedxwa0nvx6nv" path="res://Scenes/Space/Space Generation/Planet/Planet_2/planet_2.tres" id="2_847gv"]
+[ext_resource type="Resource" uid="uid://ct70kg6jye8ck" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_2.tres" id="3_g7byq"]
+[ext_resource type="Script" uid="uid://b6i5mp4bjxaje" path="res://Scenes/Space/Space Generation/Planet/planet_data.gd" id="4_7l2g5"]
+
+[resource]
+script = ExtResource("4_7l2g5")
+planet_color = ExtResource("1_0wib5")
+radius = 6.0
+resolution = 50.0
+planet_noises = Array[ExtResource("1_847gv")]([ExtResource("2_847gv"), ExtResource("3_g7byq")])
+metadata/_custom_type_script = "uid://b6i5mp4bjxaje"

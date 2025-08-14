@@ -15,5 +15,5 @@ width = 128
 render_priority = 1
 shader = ExtResource("1_kv0x1")
 shader_parameter/min_height = 4.12
-shader_parameter/max_height = 4.64227
+shader_parameter/max_height = 4.64361
 shader_parameter/height_color = SubResource("GradientTexture1D_qrqnx")

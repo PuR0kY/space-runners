@@ -10,13 +10,13 @@ resource_local_to_scene = true
 panorama = ExtResource("2_5bohy")
 filter = false
 
-[sub_resource type="Sky" id="Sky_t63vg"]
+[sub_resource type="Sky" id="Sky_5bohy"]
 sky_material = SubResource("PanoramaSkyMaterial_j2qir")
 
 [sub_resource type="Environment" id="Environment_5bohy"]
 background_mode = 2
 background_energy_multiplier = 3.22
-sky = SubResource("Sky_t63vg")
+sky = SubResource("Sky_5bohy")
 tonemap_mode = 2
 
 [node name="MainMenu" type="Node3D"]
