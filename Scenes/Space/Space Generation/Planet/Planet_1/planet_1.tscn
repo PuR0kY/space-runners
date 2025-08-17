@@ -116,6 +116,13 @@ _surfaces = [{
 [node name="Planet" instance=ExtResource("1_4tp47")]
 transform = Transform3D(-1.01025, 0, 0.0270825, 0, 1, 0, -0.0270825, 0, -1.01025, 0, 0, 0)
 script = ExtResource("2_qblwe")
+rotation_speed_deg = 1.0
+gravity_strength = 20.0
+gravity_range = 1000.0
+min_height = 99999.0
+max_height = 0.0
+radius = 10.0
+resolution = 50.0
 planet_noises = Array[ExtResource("3_cosc6")]([SubResource("Resource_1qv3f"), SubResource("Resource_x2c5r")])
 
 [node name="Up" parent="." index="1"]

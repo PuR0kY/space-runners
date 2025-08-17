@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="PlanetNoise" load_steps=3 format=3 uid="uid://bedxwa0nvx6nv"]
+[gd_resource type="Resource" script_class="PlanetNoise" load_steps=2 format=3 uid="uid://bedxwa0nvx6nv"]
 
-[ext_resource type="Texture2D" uid="uid://dqkth7sees0uo" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_1_noise_2.tres" id="1_cmjb1"]
 [ext_resource type="Script" uid="uid://bbg710foqgnx3" path="res://Scenes/Space/Space Generation/Planet/planet_noise.gd" id="2_5dcby"]
 
 [resource]
@@ -8,5 +7,4 @@ script = ExtResource("2_5dcby")
 use_first_layer_as_mask = true
 min_height = 0.6
 amplitude = 1.07
-noise_map = ExtResource("1_cmjb1")
 metadata/_custom_type_script = "uid://bbg710foqgnx3"

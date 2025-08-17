@@ -114,6 +114,7 @@ _surfaces = [{
 [node name="Planet_2" instance=ExtResource("1_5afn6")]
 transform = Transform3D(0.531144, 0, 0.860059, 0, 1, 0, -0.860059, 0, 0.531144, 0, 0, 0)
 script = ExtResource("2_btcxn")
+rotation_speed_deg = 1.0
 gravity_strength = 40.0
 gravity_range = 2000.0
 min_height = 99999.0
