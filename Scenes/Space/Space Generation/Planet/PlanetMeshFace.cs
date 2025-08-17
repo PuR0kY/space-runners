@@ -5,29 +5,38 @@ using System;
 [Tool]
 public partial class PlanetMeshFace : MeshInstance3D
 {
-	[Export] public int MeshId { get; set; }
-	[Export] public Vector3 Normal { get; set; }
-	[Export] public Material Material { get; set; }
 
-	private Planet Owner { get; set; }
+	[ExportCategory("PCG")]
+	[Export]
+	public int MeshId { get; set; }
+	[Export]
+	public Vector3 Normal { get; set; }
+	[Export]
+	public Material Material { get; set; }
+	[Export]
+	public Planet Owner { get; set; }
 
 	public override void _Ready()
 	{
 		// Případně by se tu mohl načítat materiál jen jednou
 	}
 
-	public Godot.Collections.Array RegenerateMesh(int resolution)
+	public Godot.Collections.Array RegenerateMesh(float resolution)
 	{
-		var arrays = new Godot.Collections.Array();
+		Godot.Collections.Array arrays = new();
 		arrays.Resize((int)Mesh.ArrayType.Max);
 
-		int numVertices = resolution * resolution;
-		int numIndices = (resolution - 1) * (resolution - 1) * 6;
+		int numVertices = (int)(resolution * resolution);
+		int numIndices = (int)((resolution - 1) * (resolution - 1) * 6);
 
-		Vector3[] vertexArray = [];
-		Vector2[] uvArray = [];
-		Vector3[] normalArray = [];
-		int[] indexArray = [];
+		GD.Print($"Setting array sizes of vertexArray and normalArray to {numVertices}, resolution is: {resolution}.");
+
+		Vector3[] vertexArray = new Vector3[numVertices];
+		Vector2[] uvArray = new Vector2[numVertices];
+		Vector3[] normalArray = new Vector3[numVertices];
+
+		// Pokud potřebuješ i index array
+		int[] indexArray = new int[numIndices];
 
 		int triIndex = 0;
 		Vector3 axisA = new Vector3(Normal.Y, Normal.Z, Normal.X);
@@ -40,8 +49,8 @@ public partial class PlanetMeshFace : MeshInstance3D
 		{
 			for (int x = 0; x < resolution; x++)
 			{
-				int i = x + y * resolution;
-				Vector2 percent = new Vector2((float)x, (float)y) / (resolution - 1);
+				int i = x + y * (int)resolution;
+				Vector2 percent = new Vector2(x, y) / (resolution - 1);
 				Vector3 pointOnUnitCube = Normal +
 										  (percent.X - 0.5f) * 2f * axisA +
 										  (percent.Y - 0.5f) * 2f * axisB;
@@ -56,15 +65,15 @@ public partial class PlanetMeshFace : MeshInstance3D
 				if (l > 0)
 					MAX_HEIGHT = l;
 
-				if (x != resolution - 1 && y != resolution - 1)
+				if (x != resolution - 1f && y != resolution - 1f)
 				{
 					indexArray[triIndex + 2] = i;
-					indexArray[triIndex + 1] = i + resolution + 1;
-					indexArray[triIndex] = i + resolution;
+					indexArray[triIndex + 1] = i + (int)resolution + 1;
+					indexArray[triIndex] = i + (int)resolution;
 
 					indexArray[triIndex + 5] = i;
 					indexArray[triIndex + 4] = i + 1;
-					indexArray[triIndex + 3] = i + resolution + 1;
+					indexArray[triIndex + 3] = i + (int)resolution + 1;
 					triIndex += 6;
 				}
 			}
@@ -102,9 +111,19 @@ public partial class PlanetMeshFace : MeshInstance3D
 
 	public void UpdateMesh(Godot.Collections.Array arrays)
 	{
+		GD.Print("Updating mesh..." + MeshId);
+		GD.Print("Array size is: " + arrays.Count);
+
 		var mesh = new ArrayMesh();
+
+		// Add the mesh surface
 		mesh.AddSurfaceFromArrays(Mesh.PrimitiveType.Triangles, arrays);
-		mesh.SurfaceSetMaterial(0, Material);
+
+		// Apply the material if assigned
+		if (Material != null)
+			mesh.SurfaceSetMaterial(0, Material);
+
+		// Set the mesh instance
 		this.Mesh = mesh;
 	}
 }

@@ -3,7 +3,9 @@ using SpacePirates.Scenes.Space.Space_Generation.Planet;
 using SpacePirates.Scenes.Space.Space_Generation.Planet.LOD;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
+[Tool]
 public partial class Planet : Node3D
 {
 	[Export] int ID { get; set; }
@@ -24,7 +26,15 @@ public partial class Planet : Node3D
 
 	private Area3D _area3D;
 
-	public Dictionary<int, PlanetLOD> FaceMeshResolution = PlanetLOD.GetFaceMeshResolution();
+	public Dictionary<int, PlanetLOD> FaceMeshResolution = new()
+		{
+			{ 0, new PlanetLOD() },
+			{ 1, new PlanetLOD() },
+			{ 2, new PlanetLOD() },
+			{ 3, new PlanetLOD() },
+			{ 4, new PlanetLOD() },
+			{ 5, new PlanetLOD() }
+		};
 
 	private readonly List<PlanetMeshFace> _faces = new();
 
@@ -38,23 +48,33 @@ public partial class Planet : Node3D
 		foreach (var child in GetChildren())
 		{
 			if (child is PlanetMeshFace face)
+			{
 				_faces.Add(face);
+			}
 		}
 
 		// GENERATING NEW PLANET MESHES
+		var path = $"res://Scenes/Space/Space Generation/Planet/Planet_1/Meshes/planet_{ID}_face_{ID}.tres";
 		if (GenerateNewMeshes)
 		{
 			GenerateLod(Shared.OUT_RESOLUTION);
 			GenerateLod(Shared.FAR_RESOLUTION);
 			GenerateLod(Shared.MID_RESOLUTION);
-			GenerateLod(Shared.CLOSE_RESOLUTION);
+			GenerateLod(Shared.MID_RESOLUTION);
 			SaveFacesAsResources();
 		}
 
 		// LOADING EXISTING MESHES
 		LoadFacesFromResources();
 		ApplyMesh(Shared.OUT_RESOLUTION);
+
+		var areas = GetNode<Node>("Areas");
+		if (areas != null)
+		{
+			areas.Connect("spaceship_entered", new Callable(this, nameof(ApplyMesh)));
+		}
 	}
+	
 
 	public Vector3 PointOnPlanet(Vector3 pointOnSphere)
 	{
@@ -70,7 +90,7 @@ public partial class Planet : Node3D
 			if (IsFirstLayerMask)
 				mask = baseElevation;
 
-			var levelElevation = Shared.GetElevation(noise, pointOnSphere, Amplitude, MinHeight);
+			var levelElevation = Shared.GetElevation(noise, pointOnSphere, Amplitude, MinHeight) * mask;
 			elevation += levelElevation;
 		}
 
@@ -80,22 +100,28 @@ public partial class Planet : Node3D
 	// --------------------
 	// LOD generování & aplikace
 	// --------------------
-	private void GenerateLod(int resolution)
+	private void GenerateLod(float resolution)
 	{
 		foreach (var face in _faces)
 		{
 			GD.Print($"creating mesh for face: {face.MeshId}");
 			GD.Print($"with resolution: {resolution}");
 			var arrays = face.RegenerateMesh(resolution);
-			FaceMeshResolution[face.MeshId].SetLod(resolution, arrays);
+			FaceMeshResolution[face.MeshId].LODs[(int)resolution] = arrays;
 		}
 	}
 
-	private void ApplyMesh(int resolution)
+	private void ApplyMesh(float resolution)
 	{
 		foreach (var face in _faces)
 		{
-			var arrays = FaceMeshResolution[face.MeshId].GetLod(resolution);
+			GD.Print($"applying mesh for face: {face.MeshId}");
+			var arrays = FaceMeshResolution[face.MeshId].GetLod((int)resolution);
+			if (arrays.Count == 0)
+			{
+				GD.PrintErr("No mesh arrays to apply for face ", face.MeshId, " at resolution ", resolution);
+				return; // skip updating
+			}
 			face.UpdateMesh(arrays);
 		}
 	}
@@ -103,39 +129,6 @@ public partial class Planet : Node3D
 	public override void _Process(double delta)
 	{
 		RotateY(Mathf.DegToRad(RotationSpeedDeg) * (float)delta);
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		if (_area3D == null)
-			return;
-
-		var bodies = _area3D.GetOverlappingBodies();
-		foreach (var b in bodies)
-		{
-			if (b is Spaceship ship)
-			{
-				GD.Print($"spaceship entered {ship.ship_id}");
-
-				var dir = GlobalTransform.Origin - ship.GlobalTransform.Origin;
-				float dist = dir.Length();
-				var force = dir.Normalized() * GravityStrength * (1.0f - dist / GravityRange);
-				ship.SetGravityForce(force * -1f);
-
-				// Rotace kolem středu planety
-				var center = GlobalTransform.Origin;
-				var rotDir = ship.GlobalTransform.Origin - center;
-				float angle = Mathf.DegToRad(RotationSpeedDeg) * (float)delta;
-				rotDir = rotDir.Rotated(Vector3.Up, angle);
-				ship.GlobalTransform = new Transform3D(
-					ship.GlobalTransform.Basis,
-					center + rotDir
-				);
-
-				// Natočení lodi podle rotace planety
-				ship.RotateY(angle);
-			}
-		}
 	}
 
 	// --------------------
@@ -155,85 +148,18 @@ public partial class Planet : Node3D
 
 	private void LoadFacesFromResources()
 	{
-		for (int i = 0; i < 6; i++)
+		foreach (var face in _faces)
 		{
-			var path = $"res://Scenes/Space/Space Generation/Planet/Planet_1/Meshes/planet_{ID}_face_{i}.tres";
+			var path = $"res://Scenes/Space/Space Generation/Planet/Planet_1/Meshes/planet_{1}_face_{face.MeshId}.tres";
+			GD.Print("Path of Resource exists: " + ResourceLoader.Exists(path));
 			if (ResourceLoader.Exists(path))
 			{
 				var loaded = ResourceLoader.Load<PlanetLOD>(path);
+				GD.Print("Loaded:" + loaded != null);
+
 				if (loaded != null)
-					FaceMeshResolution[i] = loaded;
+					FaceMeshResolution[face.MeshId] = loaded;
 			}
 		}
-	}
-
-	// --------------------
-	// Handlery pro signály z oblastí (připoj v editoru)
-	// --------------------
-	public void OnArea3DBodyExited(Node3D body)
-	{
-		if (body is Spaceship ship)
-		{
-			GD.Print($"spaceship left {ship.ship_id}");
-			ship.SetGravityForce(Vector3.Zero);
-		}
-	}
-
-	public void OnCloseAreaBodyEntered(Node3D body)
-	{
-		if (body is not Spaceship) return;
-
-		Resolution = Shared.CLOSE_RESOLUTION;
-		GD.Print($"applying new mesh: {Resolution}");
-		ApplyMesh(Shared.CLOSE_RESOLUTION);
-	}
-
-	public void OnCloseAreaBodyExited(Node3D body)
-	{
-		if (body is not Spaceship) return;
-
-		Resolution = Shared.MID_RESOLUTION;
-		GD.Print($"applying new mesh: {Resolution}");
-		ApplyMesh(Shared.MID_RESOLUTION);
-	}
-
-	public void OnFarAreaBodyEntered(Node3D body)
-	{
-		if (body is not Spaceship) return;
-		if (Resolution == Shared.FAR_RESOLUTION) return;
-
-		Resolution = Shared.FAR_RESOLUTION;
-		GD.Print($"applying new mesh: {Resolution}");
-		ApplyMesh(Shared.FAR_RESOLUTION);
-	}
-
-	public void OnFarAreaBodyExited(Node3D body)
-	{
-		if (body is not Spaceship) return;
-		if (Resolution == Shared.OUT_RESOLUTION) return;
-
-		Resolution = Shared.OUT_RESOLUTION;
-		GD.Print($"applying new mesh: {Resolution}");
-		ApplyMesh(Shared.OUT_RESOLUTION);
-	}
-
-	public void OnMidAreaBodyEntered(Node3D body)
-	{
-		if (body is not Spaceship) return;
-		if (Resolution == Shared.MID_RESOLUTION) return;
-
-		Resolution = Shared.MID_RESOLUTION;
-		GD.Print($"applying new mesh: {Resolution}");
-		ApplyMesh(Shared.MID_RESOLUTION);
-	}
-
-	public void OnMidAreaBodyExited(Node3D body)
-	{
-		if (body is not Spaceship) return;
-		if (Resolution == Shared.FAR_RESOLUTION) return;
-
-		Resolution = Shared.FAR_RESOLUTION;
-		GD.Print($"applying new mesh: {Resolution}");
-		ApplyMesh(Shared.FAR_RESOLUTION);
 	}
 }

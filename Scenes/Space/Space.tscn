@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://2i7elscin3el"]
+[gd_scene load_steps=10 format=3 uid="uid://2i7elscin3el"]
 
 [ext_resource type="PackedScene" uid="uid://d0dqjiuwt6gvd" path="res://Scenes/Space/Space Generation/asteroid_generator.tscn" id="1_8xonx"]
 [ext_resource type="Script" uid="uid://tae0ruv25io" path="res://Scenes/Space/space.gd" id="1_rgpdy"]
 [ext_resource type="PackedScene" uid="uid://evmsc8h18cpe" path="res://Scenes/Space/Space Generation/mothership_generator.tscn" id="2_0u6vc"]
 [ext_resource type="Texture2D" uid="uid://dgcwsqbrn4mrs" path="res://textures/nebula_texture.jpg" id="2_sogqe"]
 [ext_resource type="PackedScene" uid="uid://c0rer5ogbsc8x" path="res://Scenes/Space/Space Generation/orb_generator.tscn" id="3_kcipt"]
-[ext_resource type="PackedScene" uid="uid://cw07d5o4x1kw0" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_1.tscn" id="5_rg6t8"]
-[ext_resource type="Script" uid="uid://bbg710foqgnx3" path="res://Scenes/Space/Space Generation/Planet/planet_noise.gd" id="6_iksma"]
-[ext_resource type="PackedScene" uid="uid://kifi3pd5cg6x" path="res://Scenes/Space/Space Generation/Planet/Planet_2/planet_2.tscn" id="6_j6ls2"]
+[ext_resource type="PackedScene" uid="uid://7mgerihp2npk" path="res://Scenes/Space/Space Generation/Planet/Planet.tscn" id="5_sogqe"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sogqe"]
 resource_local_to_scene = true
@@ -44,21 +42,9 @@ script = ExtResource("1_rgpdy")
 
 [node name="Planets" type="Node3D" parent="."]
 
-[node name="Planet" parent="Planets" instance=ExtResource("5_rg6t8")]
-transform = Transform3D(-399.856, 0, 10.7192, 0, 395.648, 0, -10.7192, 0, -399.856, 10000, 0, 0)
-rotation_speed_deg = 1.0
-gravity_strength = 20.0
-gravity_range = 1000.0
-min_height = 99999.0
-max_height = 0.0
-radius = 10.0
-resolution = 50.0
-planet_noises = Array[ExtResource("6_iksma")]([])
-
-[node name="Planet_2" parent="Planets" instance=ExtResource("6_j6ls2")]
-transform = Transform3D(262.721, 0, 425.414, 0, 494.56, 0, -425.414, 0, 262.721, -10000, 0, 0)
-rotation_speed_deg = 1.0
-planet_noises = Array[ExtResource("6_iksma")]([])
+[node name="Planet" parent="Planets" instance=ExtResource("5_sogqe")]
+transform = Transform3D(299.946, 0, 7.02884, 0, 296.736, 0, -7.02884, 0, 299.946, -10000, 0, 0)
+Amplitude = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rg6t8")

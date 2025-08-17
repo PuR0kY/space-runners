@@ -1,10 +1,21 @@
-@tool
 extends Node3D
-class_name Planet
 
-@onready var area_3d: Area3D = $Area3D
+signal spaceship_entered(resolution: int)
+
+@export var area_3d: Area3D
+@export var gravity_strength: float
+@export var gravity_range: float
+@export var rotation_speed_deg: float
+
+const CLOSE_RESOLUTION = 650
+const MID_RESOLUTION = 350
+const FAR_RESOLUTION = 150
+const OUT_RESOLUTION = 5
 
 func _physics_process(delta: float) -> void:
+	if not area_3d:
+		return
+
 	for body in area_3d.get_overlapping_bodies():
 		if body is Spaceship:
 			print("spaceship entered", body.ship_id)
@@ -34,59 +45,37 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 func _on_close_area_body_entered(body: Node3D) -> void:
 	if body is not Spaceship:
 		return;
-		
-	current_resolution = CLOSE_RESOLUTION
-	print("applying new mesh: ", current_resolution)
-	apply_mesh(CLOSE_RESOLUTION)
+	emit_signal("spaceship_entered", CLOSE_RESOLUTION)
 
 
 func _on_close_area_body_exited(body: Node3D) -> void:
 	if body is not Spaceship:
 		return;
-	
-	current_resolution = MID_RESOLUTION
-	print("applying new mesh: ", current_resolution)
-	apply_mesh(MID_RESOLUTION)
+	emit_signal("spaceship_entered", MID_RESOLUTION)
 
 
 func _on_far_area_body_entered(body: Node3D) -> void:
 	if body is not Spaceship:
 		return;
-		
-	if current_resolution == FAR_RESOLUTION:
-		return
-	current_resolution = FAR_RESOLUTION
-	print("applying new mesh: ", current_resolution)
-	apply_mesh(FAR_RESOLUTION)
+	emit_signal("spaceship_entered", FAR_RESOLUTION)
 
 func _on_far_area_body_exited(body: Node3D) -> void:
 	if body is not Spaceship:
-		return;
-		
-	if current_resolution == OUT_RESOLUTION:
-		return
-	current_resolution = OUT_RESOLUTION
-	print("applying new mesh: ", current_resolution)
-	apply_mesh(OUT_RESOLUTION)
+		return;	
+	emit_signal("spaceship_entered", OUT_RESOLUTION)
 
 
 func _on_mid_area_body_entered(body: Node3D) -> void:
 	if body is not Spaceship:
 		return;
-		
-	if current_resolution == MID_RESOLUTION:
-		return
-	current_resolution = MID_RESOLUTION
-	print("applying new mesh: ", current_resolution)
-	apply_mesh(MID_RESOLUTION)
+	emit_signal("spaceship_entered", MID_RESOLUTION)
 
 
 func _on_mid_area_body_exited(body: Node3D) -> void:
 	if body is not Spaceship:
 		return;
-		
-	if current_resolution == FAR_RESOLUTION:
-		return
-	current_resolution = FAR_RESOLUTION
-	print("applying new mesh: ", current_resolution)
-	apply_mesh(FAR_RESOLUTION)
+	emit_signal("spaceship_entered", FAR_RESOLUTION)
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
