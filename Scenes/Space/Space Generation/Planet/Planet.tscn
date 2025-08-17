@@ -100,7 +100,7 @@ radius = 15.0
 radius = 30.0
 
 [node name="Planet" type="Node3D"]
-transform = Transform3D(0.877866, 0, -0.479388, 0, 1, 0, 0.479388, 0, 0.877866, 0, 0, 0)
+transform = Transform3D(-0.411798, 0, 0.911617, 0, 1, 0, -0.911617, 0, -0.411798, 0, 0, 0)
 script = ExtResource("1_svryr")
 ID = 1
 Name = "Planet"
@@ -176,9 +176,6 @@ mesh = SubResource("SphereMesh_80y83")
 [node name="Areas" type="Node3D" parent="." node_paths=PackedStringArray("area_3d")]
 script = ExtResource("5_80y83")
 area_3d = NodePath("../Area3D")
-gravity_strength = 10.0
-gravity_range = 1000.0
-rotation_speed_deg = 5.0
 
 [node name="CloseArea" type="Area3D" parent="Areas"]
 collision_layer = 7
