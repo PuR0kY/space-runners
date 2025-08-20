@@ -1,7 +1,10 @@
 [gd_resource type="FastNoiseLite" format=3 uid="uid://o3u5qhnij643"]
 
 [resource]
-frequency = 0.02
-fractal_octaves = 4
-fractal_lacunarity = 0.005
-fractal_gain = 1.505
+noise_type = 3
+seed = 123456
+frequency = 0.0227
+fractal_octaves = 6
+fractal_lacunarity = 0.315
+fractal_gain = 0.33
+fractal_weighted_strength = 0.47

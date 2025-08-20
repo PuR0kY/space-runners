@@ -4,8 +4,8 @@
 
 [sub_resource type="Gradient" id="Gradient_2qyhv"]
 resource_local_to_scene = true
-offsets = PackedFloat32Array(0, 0.24424, 0.527132, 0.653747, 0.751152, 1)
-colors = PackedColorArray(0, 0.124034, 0.999999, 1, 5.29438e-07, 0.393712, 0.341928, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.130435, 0.26087, 0.492754, 0.710145, 0.811594, 0.898551)
+colors = PackedColorArray(0, 0.0906402, 0.730769, 1, 0.728965, 0.487073, 0.283068, 1, 0, 0.584314, 0, 1, 1, 1, 1, 1, 0, 0.584314, 0, 1, 0.671905, 0.379088, 0.132135, 1, 0, 0.124034, 0.999999, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qrqnx"]
 gradient = SubResource("Gradient_2qyhv")
@@ -14,6 +14,6 @@ width = 128
 [resource]
 render_priority = 1
 shader = ExtResource("1_kv0x1")
-shader_parameter/min_height = 4.12
-shader_parameter/max_height = 4.64361
+shader_parameter/min_height = 4.005
+shader_parameter/max_height = 5.0
 shader_parameter/height_color = SubResource("GradientTexture1D_qrqnx")

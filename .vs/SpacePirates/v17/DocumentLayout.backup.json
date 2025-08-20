@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "F:\\space-runners\\space-runners\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AF6B8C02-5DFA-4616-88CD-3F34938634AC}|SpacePirates.csproj|f:\\space-runners\\space-runners\\scenes\\space\\space generation\\planet\\planet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF6B8C02-5DFA-4616-88CD-3F34938634AC}|SpacePirates.csproj|solutionrelative:scenes\\space\\space generation\\planet\\planet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D1B884E2-E91A-423C-8567-655B971684C2}|SpacePirates.csproj|f:\\space-runners\\space-runners\\scenes\\space\\space generation\\planet\\planetmeshface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1B884E2-E91A-423C-8567-655B971684C2}|SpacePirates.csproj|solutionrelative:scenes\\space\\space generation\\planet\\planetmeshface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF6B8C02-5DFA-4616-88CD-3F34938634AC}|SpacePirates.csproj|f:\\space-runners\\space-runners\\scenes\\space\\space generation\\planet\\planetmeshside.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF6B8C02-5DFA-4616-88CD-3F34938634AC}|SpacePirates.csproj|solutionrelative:scenes\\space\\space generation\\planet\\planetmeshside.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D1B884E2-E91A-423C-8567-655B971684C2}|SpacePirates.csproj|f:\\space-runners\\space-runners\\scenes\\space\\space generation\\planet\\lod\\planetlod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1B884E2-E91A-423C-8567-655B971684C2}|SpacePirates.csproj|solutionrelative:scenes\\space\\space generation\\planet\\lod\\planetlod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF6B8C02-5DFA-4616-88CD-3F34938634AC}|SpacePirates.csproj|f:\\space-runners\\space-runners\\scenes\\space\\space generation\\planet\\shared.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF6B8C02-5DFA-4616-88CD-3F34938634AC}|SpacePirates.csproj|solutionrelative:scenes\\space\\space generation\\planet\\shared.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D1B884E2-E91A-423C-8567-655B971684C2}|SpacePirates.csproj|f:\\space-runners\\space-runners\\scenes\\space\\space generation\\planet\\planet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1B884E2-E91A-423C-8567-655B971684C2}|SpacePirates.csproj|solutionrelative:scenes\\space\\space generation\\planet\\planet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AF6B8C02-5DFA-4616-88CD-3F34938634AC}|SpacePirates.csproj|f:\\space-runners\\space-runners\\scenes\\space\\space generation\\planet\\lod\\planetlod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AF6B8C02-5DFA-4616-88CD-3F34938634AC}|SpacePirates.csproj|solutionrelative:scenes\\space\\space generation\\planet\\lod\\planetlod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D1B884E2-E91A-423C-8567-655B971684C2}|SpacePirates.csproj|f:\\space-runners\\space-runners\\scenes\\space\\space generation\\planet\\shared.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1B884E2-E91A-423C-8567-655B971684C2}|SpacePirates.csproj|solutionrelative:scenes\\space\\space generation\\planet\\shared.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Planet.cs",
               "DocumentMoniker": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\Planet.cs",
               "RelativeDocumentMoniker": "Scenes\\Space\\Space Generation\\Planet\\Planet.cs",
               "ToolTip": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\Planet.cs",
               "RelativeToolTip": "Scenes\\Space\\Space Generation\\Planet\\Planet.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAowHIAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-17T15:41:09.099Z",
               "IsPinned": true,
@@ -44,39 +44,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "PlanetLOD.cs",
               "DocumentMoniker": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\LOD\\PlanetLOD.cs",
               "RelativeDocumentMoniker": "Scenes\\Space\\Space Generation\\Planet\\LOD\\PlanetLOD.cs",
               "ToolTip": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\LOD\\PlanetLOD.cs",
               "RelativeToolTip": "Scenes\\Space\\Space Generation\\Planet\\LOD\\PlanetLOD.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAswB4AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAhwDYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-17T16:14:22.486Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlanetMeshSide.cs",
-              "DocumentMoniker": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\PlanetMeshSide.cs",
-              "RelativeDocumentMoniker": "Scenes\\Space\\Space Generation\\Planet\\PlanetMeshSide.cs",
-              "ToolTip": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\PlanetMeshSide.cs",
-              "RelativeToolTip": "Scenes\\Space\\Space Generation\\Planet\\PlanetMeshSide.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAmwFkAAAAoAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "PlanetMeshFace.cs",
+              "DocumentMoniker": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\PlanetMeshFace.cs",
+              "RelativeDocumentMoniker": "Scenes\\Space\\Space Generation\\Planet\\PlanetMeshFace.cs",
+              "ToolTip": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\PlanetMeshFace.cs",
+              "RelativeToolTip": "Scenes\\Space\\Space Generation\\Planet\\PlanetMeshFace.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-17T15:33:51.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Shared.cs",
               "DocumentMoniker": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\Shared.cs",
               "RelativeDocumentMoniker": "Scenes\\Space\\Space Generation\\Planet\\Shared.cs",
               "ToolTip": "F:\\space-runners\\space-runners\\Scenes\\Space\\Space Generation\\Planet\\Shared.cs",
               "RelativeToolTip": "Scenes\\Space\\Space Generation\\Planet\\Shared.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAiwBUAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-17T15:45:57.572Z",
               "EditorCaption": ""

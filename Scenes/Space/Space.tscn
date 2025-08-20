@@ -43,8 +43,7 @@ script = ExtResource("1_rgpdy")
 [node name="Planets" type="Node3D" parent="."]
 
 [node name="Planet" parent="Planets" instance=ExtResource("5_sogqe")]
-transform = Transform3D(299.946, 0, 7.02884, 0, 296.736, 0, -7.02884, 0, 299.946, -10000, 0, 0)
-Amplitude = 1.0
+transform = Transform3D(-89.8254, 0, -286.317, 0, 296.736, 0, 286.317, 0, -89.8254, -10000, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rg6t8")

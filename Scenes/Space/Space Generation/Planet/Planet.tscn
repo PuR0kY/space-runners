@@ -1,17 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://7mgerihp2npk"]
+[gd_scene load_steps=22 format=3 uid="uid://7mgerihp2npk"]
 
 [ext_resource type="Script" uid="uid://74ge1mkoyu37" path="res://Scenes/Space/Space Generation/Planet/Planet.cs" id="1_svryr"]
 [ext_resource type="Script" uid="uid://dyga1ky6bp65u" path="res://Scenes/Space/Space Generation/Planet/PlanetMeshFace.cs" id="2_3l861"]
 [ext_resource type="FastNoiseLite" uid="uid://o3u5qhnij643" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_1_noise.tres" id="3_065n6"]
+[ext_resource type="FastNoiseLite" uid="uid://dhdnf1dhqpook" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_1_noise_2.tres" id="3_67ncy"]
 [ext_resource type="Material" uid="uid://ce68ous2miebp" path="res://Scenes/Space/Space Generation/Planet/materials/Planet_1_material.tres" id="3_svryr"]
-[ext_resource type="FastNoiseLite" uid="uid://dhdnf1dhqpook" path="res://Scenes/Space/Space Generation/Planet/Planet_1/planet_1_noise_2.tres" id="4_n3kqw"]
 [ext_resource type="Script" uid="uid://bj7pgr1cb1yta" path="res://Scenes/Space/Space Generation/Planet/areas.gd" id="5_80y83"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_owvmt"]
-noise = ExtResource("3_065n6")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b63ni"]
-noise = ExtResource("4_n3kqw")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_svryr"]
 radius = 8.0
@@ -102,15 +96,9 @@ radius = 30.0
 [node name="Planet" type="Node3D"]
 transform = Transform3D(-0.411798, 0, 0.911617, 0, 1, 0, -0.911617, 0, -0.411798, 0, 0, 0)
 script = ExtResource("1_svryr")
-ID = 1
-Name = "Planet"
-Radius = 4.0
-PlanetNoises = [SubResource("NoiseTexture2D_owvmt"), SubResource("NoiseTexture2D_b63ni")]
-Amplitude = 1.0
-MinHeight = 0.4
-IsFirstLayerMask = true
-Resolution = 100.0
-Area3DPath = NodePath("Area3D")
+Noises = Array[FastNoiseLite]([ExtResource("3_065n6"), ExtResource("3_67ncy")])
+Material = ExtResource("3_svryr")
+Radius = 6.0
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 7
@@ -124,49 +112,32 @@ wind_attenuation_factor = 0.134
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_svryr")
 
-[node name="Up" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Owner")]
+[node name="Up" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.0283422, -0.0245771, 0.00641491)
 script = ExtResource("2_3l861")
-Normal = Vector3(0, 1, 0)
 Material = ExtResource("3_svryr")
-Owner = NodePath("..")
 
-[node name="Down" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Owner")]
+[node name="Down" type="MeshInstance3D" parent="."]
 script = ExtResource("2_3l861")
-MeshId = 1
-Normal = Vector3(0, -1, 0)
 Material = ExtResource("3_svryr")
-Owner = NodePath("..")
 
-[node name="Left" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Owner")]
+[node name="Left" type="MeshInstance3D" parent="."]
 script = ExtResource("2_3l861")
-MeshId = 2
-Normal = Vector3(-1, 0, 0)
 Material = ExtResource("3_svryr")
-Owner = NodePath("..")
 
-[node name="Right" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Owner")]
+[node name="Right" type="MeshInstance3D" parent="."]
 script = ExtResource("2_3l861")
-MeshId = 3
-Normal = Vector3(1, 0, 0)
 Material = ExtResource("3_svryr")
-Owner = NodePath("..")
 
-[node name="Front" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Owner")]
+[node name="Front" type="MeshInstance3D" parent="."]
 layers = 3
 gi_mode = 2
 script = ExtResource("2_3l861")
-MeshId = 4
-Normal = Vector3(0, 0, -1)
 Material = ExtResource("3_svryr")
-Owner = NodePath("..")
 
-[node name="Back" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Owner")]
+[node name="Back" type="MeshInstance3D" parent="."]
 script = ExtResource("2_3l861")
-MeshId = 5
-Normal = Vector3(0, 0, 1)
 Material = ExtResource("3_svryr")
-Owner = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 gi_mode = 0

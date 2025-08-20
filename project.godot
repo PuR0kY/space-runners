@@ -130,10 +130,6 @@ combat_mode={
 ]
 }
 
-[physics]
-
-3d/run_on_separate_thread=true
-
 [rendering]
 
 rendering_device/driver.windows="d3d12"
@@ -141,3 +137,7 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 limits/spatial_indexer/threaded_cull_minimum_instances=4000
+
+[threading]
+
+worker_pool/max_threads=4
