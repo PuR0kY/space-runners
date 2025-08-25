@@ -1,7 +1,27 @@
-#### Space Pirates
+# GD-Sync: Advanced Multiplayer Plugin for Godot 4
 
- Space Pirates is a Godot Multiplayer Game located in space where main game loop is inspired by MOBA genre games. My thought is to have two motherships that has some health and that are shielded. Players are splitted to two teams and theyre job is to collect rare orbs located in space and in the mean time fight other team members. These orbs can be traded with player's Mothership for credits that can provide upgrades. Each player has chosen its Spaceship category at the beginning and this category has its own Upgrade Tree.
+## Quick Start
+Get your multiplayer game up and running quickly with our easy-to-integrate plugin. 
 
-Upgrade Trees are meant to help whole Team and are important to finish match. Atleast on Upgrade Category will have as final Upgrade some kind of Nuclear bomb that will disable enemy's Mothership Shield, which will make this Mothership vulnerable to hit.
+## Key Features
+- **Interactive Lobbies & Matchmaking:** Enable players to easily find and join each other from across the globe.
+- **Acount System:** Allow players to easily create accounts. Comes with built-in email verification and a moderation system.
+- **Persistent Data Storage:** Create databases to store and retrieve data from the cloud.
+- **Global Servers:** Deliver high uptime and seamless gameplay through our extensive global server infrastructure.
+- **In-Depth Analytics:** Gain valuable insights with detailed tracking of player statistics.
+- **Godot Asset Library Integration:** Set up GD-Sync with minimal hassle, right from within the engine.
 
-After this stage team has to work together to destroy enemy Mothership, which will mean end of the Match.
+Explore all the features on our [website](https://www.gd-sync.com).
+
+## Comprehensive Documentation
+Delve into our extensive [Documentation](https://www.gd-sync.com/documentation) for detailed integration and usage instructions.
+
+## About GD-Sync
+Born from the challenges of multiplayer game development, GD-Sync is a solution by game developers, for game developers. We provide a robust infrastructure that scales from indie projects to globally successful multiplayer games. Learn more about our journey and vision [here](https://www.gd-sync.com).
+
+
+---
+
+© 2025 GD-Sync. All rights reserved.
+- [Terms of Service](https://www.gd-sync.com/terms)
+- [Privacy Policy](https://www.gd-sync.com/privacy-policy)

@@ -3,7 +3,7 @@ using Godot;
 public partial class Planet : Node3D
 {
     [Export] public int Resolution = 320;
-    [Export] public FastNoiseLite[] Noises;
+    [Export] public Godot.FastNoiseLite[] Noises;
     [Export] public Material Material;
     [Export] public float Radius;
 

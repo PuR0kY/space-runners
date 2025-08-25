@@ -8,9 +8,9 @@ public class PlanetLOD
 
 	public float Radius { get; set; }
 
-	private FastNoiseLite[] _noiseLayers;
+	private Godot.FastNoiseLite[] _noiseLayers;
 
-	public PlanetLOD(int resolution, FastNoiseLite[] noiseLayers)
+	public PlanetLOD(int resolution, Godot.FastNoiseLite[] noiseLayers)
 	{
 		Resolution = resolution;
 		_noiseLayers = noiseLayers;
